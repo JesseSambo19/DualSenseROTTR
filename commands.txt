@@ -1,0 +1,30 @@
+For creating a new project:
+dotnet new console -n DSX_UDP_Example
+or 
+dotnet new console
+
+For running:
+dotnet run 
+
+For generating output folder:
+dotnet publish DualSenseROTTR.csproj -c Release -r win-x64 --self-contained true -o output
+Builds and publishes the DualSenseROTTR project in Release mode for 64-bit Windows, including the .NET runtime so it can run on any machine without .NET installed, and places all output files in the DualSenseROTTR folder.
+
+Optional: Framework-dependent Publish
+If you want a smaller package and don't mind requiring users to have .NET installed, use:
+dotnet publish DualSenseROTTR.csproj -c Release -r win-x64 --self-contained false -o output
+This produces a framework-dependent deployment, which is smaller but needs .NET on the target machine.
+
+For generating output folder with single file exe:
+dotnet publish DualSenseROTTR.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true -o Output
+
+For adding packages to the project:
+dotnet add package package_name
+
+For generating release folder:
+dotnet build -c Release  
+
+P.S. WujLibPad-CSharp.cs is a third party library that I got from the developer of DualSenseY
+
+DualSenseROTTR.asi is a dll file I generated with c++ to run my script from the game's root folder.
+It is designed to work with an ASI loader.

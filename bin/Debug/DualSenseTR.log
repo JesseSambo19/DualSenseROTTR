@@ -1,0 +1,544 @@
+[2025-06-21 16:38:47] Unexpected error: Object reference not set to an instance of an object.
+   at DualSenseROTTR.MemoryReader.GetModuleBase(String moduleName) in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\MemoryReader.cs:line 60
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\Program.cs:line 172
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\Program.cs:line 937
+[2025-07-06 22:46:58] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\Program.cs:line 103
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\Program.cs:line 962
+[2025-07-06 22:50:05] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\Program.cs:line 103
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\Program.cs:line 962
+[2025-07-06 22:57:14] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\Program.cs:line 103
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\Program.cs:line 962
+[2025-07-23 11:29:53] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:53] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:53] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:53] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:54] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:54] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:54] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:54] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:54] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:54] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:54] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:54] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:54] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:55] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:55] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:55] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:55] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:55] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:55] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:55] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:55] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:56] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:56] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:56] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:56] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:56] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:56] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:56] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:56] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:56] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:57] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:57] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:57] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:57] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:57] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:57] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:57] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:57] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:57] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:58] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:58] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:58] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:58] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:58] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:58] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:58] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:58] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:59] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:59] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:59] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:59] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:59] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:59] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:59] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:59] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:29:59] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:00] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:00] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:00] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:00] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:00] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:00] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:00] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:00] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:01] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:01] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:01] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:01] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:01] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:01] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:01] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:01] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:01] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:02] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:02] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:02] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:02] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:02] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:02] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:02] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:02] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:02] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:03] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:03] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:03] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:03] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:03] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:03] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:03] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:03] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:03] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:04] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:04] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:04] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:04] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:04] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:04] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:04] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:04] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:05] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:05] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:05] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:05] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:05] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:05] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:05] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:05] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:05] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:06] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:06] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:06] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:06] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:06] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:06] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:06] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:06] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:06] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:07] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:07] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:07] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:07] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:07] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:07] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:07] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:07] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:08] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:08] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:08] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:08] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:08] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:08] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:08] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:08] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:08] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:09] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:09] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:09] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:09] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:09] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:09] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:09] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:09] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:09] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:10] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:10] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:10] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:10] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:10] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:10] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:10] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:10] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:11] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:11] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:11] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:11] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:11] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:11] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:11] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:11] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:11] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:12] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:12] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:12] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:12] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:12] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:12] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:12] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:12] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:12] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:13] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:13] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:13] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:13] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:13] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:13] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:13] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:13] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:14] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:14] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:14] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:14] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:14] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:14] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:14] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:14] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:14] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:15] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:15] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:15] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:15] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:15] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:15] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:15] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:15] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:15] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:16] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:16] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:16] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:16] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:16] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:16] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:16] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:16] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:16] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:17] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:17] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:17] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:17] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:17] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:17] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:17] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2025-07-23 11:30:17] Unexpected error communicating with DSX: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\Github\DualSenseROTTR\ProgramTest.cs:line 983
+[2026-01-02 12:22:26] Unexpected error: Object reference not set to an instance of an object.
+   at DualSenseROTTR.MemoryReader.GetModuleBase(String moduleName) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\MemoryReader.cs:line 50
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 168
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1184
+[2026-01-02 12:27:31] Unexpected error: Index was outside the bounds of the array.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 169
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1185
+[2026-01-02 12:28:05] Unexpected error: Object reference not set to an instance of an object.
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 174
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1185
+[2026-01-26 18:17:27] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\ProgramROTTR.cs:line 95
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\ProgramROTTR.cs:line 1264
+[2026-02-01 18:53:37] Unexpected error: Object reference not set to an instance of an object.
+   at DualSenseROTTR.MemoryReader.GetModuleBase(String moduleName) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\MemoryReader.cs:line 50
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 180
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1420
+[2026-02-01 18:58:26] Unexpected error: Object reference not set to an instance of an object.
+   at DualSenseROTTR.MemoryReader.GetModuleBase(String moduleName) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\MemoryReader.cs:line 50
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 180
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1420
+[2026-02-01 18:59:08] Unexpected error: Object reference not set to an instance of an object.
+   at DualSenseROTTR.MemoryReader.GetModuleBase(String moduleName) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\MemoryReader.cs:line 50
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 180
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1420
+[2026-02-01 19:00:49] Unexpected error: Object reference not set to an instance of an object.
+   at DualSenseROTTR.MemoryReader.GetModuleBase(String moduleName) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\MemoryReader.cs:line 50
+   at DualSenseROTTR.Program.ControllerLogic() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 180
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1420
+[2026-02-08 22:38:36] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program copy.cs:line 106
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program copy.cs:line 1413
+[2026-02-09 16:02:40] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 106
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1402
+[2026-02-09 16:08:37] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 106
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1402
+[2026-02-09 16:08:57] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 106
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1402
+[2026-02-09 16:09:22] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 106
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1402
+[2026-02-09 16:21:59] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 107
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1403
+[2026-02-09 16:26:00] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 107
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1403
+[2026-02-09 16:27:21] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 107
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1403
+[2026-02-09 16:27:49] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 107
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1403
+[2026-02-09 16:28:53] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 107
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1403
+[2026-02-09 16:30:21] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 107
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 1403
