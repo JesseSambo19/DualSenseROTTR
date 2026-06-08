@@ -26,44 +26,12 @@ namespace DualSenseROTTR
         static string platform = "";
 
         public static IntPtr baseAddress;
-        public static IntPtr weaponPointer;
-        public static IntPtr defaultWeaponPointer;
-        public static IntPtr aimWeaponNamePointer;
-        public static IntPtr aimWeaponPointer;
-        public static IntPtr mainAmmoPointer;
-        public static IntPtr backupAmmoPointer;
-        public static IntPtr totalAmmoCapacityPointer;
-        public static IntPtr grenadeAmmoPointer;
-        public static IntPtr pauseStatesPointer;
-        public static IntPtr menuAndLoadingScreensPointer;
-        public static IntPtr arrowRopeAmmoPointer;
-        public static IntPtr shootWeaponCounterPointer;
-        public static IntPtr shootArrowCounterPointer;
-        public static IntPtr shootGrenadeCounterPointer;
-        public static IntPtr shootHandgunCounterPointer;
-        public static IntPtr shootShotgunCounterPointer;
-        public static IntPtr shootWeaponStatePointer;
-        public static IntPtr edgePointer;
-        public static IntPtr dualPistolsPointer;
-        public static IntPtr traversalPointer;
-        public static IntPtr cavePointer;
-        public static IntPtr quickTimeEventPointer;
-        public static IntPtr locationPointer;
-        public static IntPtr secondCavePointer;
-        public static IntPtr isHoldingWeapon2Pointer;
-        public static IntPtr isHoldingFireStrikerPointer1;
-        public static IntPtr isHoldingFireStrikerPointer3;
-        public static IntPtr isHoldingFireStrikerPointer4;
-        public static IntPtr isHoldingFireStrikerPointer5;
-        public static IntPtr actionPointer;
 
-        // second
-        public static IntPtr secondIsHoldingWeapon2Pointer;
-        public static IntPtr secondIsHoldingFireStrikerPointer1;
-        public static IntPtr secondIsHoldingFireStrikerPointer3;
-        public static IntPtr secondIsHoldingFireStrikerPointer4;
-        public static IntPtr secondIsHoldingFireStrikerPointer5;
-        public static IntPtr secondActionPointer;
+        public static string weaponTypePointer;
+        public static string isHoldingWeaponPointer;
+        public static string aimWeaponPointer;
+        public static string aimWeapon2Pointer;
+        public static string pauseStatesPointer;
 
 
         static void Connect()
@@ -181,27 +149,9 @@ namespace DualSenseROTTR
             // Get the base address from game process
             // baseAddress = mem.GetModuleBase("ROTTR.exe");
 
-            Console.WriteLine("Shadow of the Tomb Raider DualSense Mod Initializing...\n");
+            Console.WriteLine("Rise of the Tomb Raider DualSense Mod Initializing...\n");
 
-            // Functions.CheckPlatform(platform, versionInfo!.FileVersion!, versionInfo!.ProductVersion!);
-            // Functions.CheckPlatform(platform, fileVersion!, versionInfo!.ProductVersion!);
-
-            // string weaponTypePointer = "ROTTR.exe+03588250,10,E48,10,8A8,2D0,2C0,354";
-            string weaponTypePointer = "ROTTR.exe+02D8C758,2E8,140,398,8,390,8,2E0";
-            string isHoldingWeaponPointer = "ROTTR.exe+02D9A3F8,2B0,658,0,2C0,8,5A0";
-            // string aimWeaponPointer = "ROTTR.exe+03690398,D70,0,440,D40,160,2CC";
-            string aimWeaponPointer = "ROTTR.exe+0161E0C8,978,958,960,148,20,88,28";
-            // string shootWeaponStatePointer = "ROTTR.exe+035E6518,18";
-            // string shootWeaponStatePointer = "ROTTR.exe+2F83748";
-            // string shootWeaponStatePointer1 = "ROTTR.exe+2F836C0";
-            // string shootWeaponStatePointer = "ROTTR.exe+14982CC";
-            // string pauseStatesPointer = "ROTTR.exe+30141EC";
-            string pauseStatesPointer = "ROTTR.exe+02E6C0A8,190,68,0,10,0,0,DF8";
-            // string drawBowPointer = "ROTTR.exe+023596E0,60,40,4B0,2E0,8,B8,E8";
-            string cutscenePointer = "ROTTR.exe+010F65D0,8,68,10,24";
-            // string cutscene2Pointer = "ROTTR.exe+1497B98";
-            // string machinegunAmmoPointer = "ROTTR.exe+035E5D58,2E8,280,298,10,28,48,C";
-            // string isHoldingPickAxePointer = "00152B90";
+            Functions.CheckPlatform(platform, fileVersion!, versionInfo!.ProductVersion!);
 
             Packet p = new()
             {
@@ -253,64 +203,35 @@ namespace DualSenseROTTR
             long lastMachinegunShotTime = 0;
             const int MACHINE_STOP_TIMEOUT_MS = 150; // 100 - 150
 
-            // while (!Functions.IsValidMemory(
-            //     aimWeaponPointer, 
-            //     mainAmmoPointer, 
-            //     backupAmmoPointer, 
-            //     totalAmmoCapacityPointer, 
-            //     grenadeAmmoPointer, 
-            //     arrowRopeAmmoPointer, 
-            //     pauseStatesPointer,
-            //     menuAndLoadingScreensPointer,
-            //     shootWeaponCounterPointer, 
-            //     shootArrowCounterPointer, 
-            //     shootGrenadeCounterPointer, 
-            //     shootHandgunCounterPointer, 
-            //     shootShotgunCounterPointer,
-            //     shootWeaponStatePointer,
-            //     edgePointer,
-            //     dualPistolsPointer,
-            //     traversalPointer,
-            //     isHoldingWeapon2Pointer,
-            //     defaultWeaponPointer,
-            //     cavePointer,
-            //     quickTimeEventPointer,
-            //     locationPointer,
-            //     secondCavePointer,
-            //     isHoldingFireStrikerPointer1,
-            //     isHoldingFireStrikerPointer3,
-            //     isHoldingFireStrikerPointer4,
-            //     isHoldingFireStrikerPointer5,
-            //     actionPointer,
-            //     secondIsHoldingWeapon2Pointer,
-            //     secondIsHoldingFireStrikerPointer1,
-            //     secondIsHoldingFireStrikerPointer3,
-            //     secondIsHoldingFireStrikerPointer4,
-            //     secondIsHoldingFireStrikerPointer5,
-            //     secondActionPointer,
-            //     mem))
-            // {
-            //     gameProcessName = Process.GetProcessesByName("ROTTR");
+            while (!Functions.IsValidMemory(
+                weaponTypePointer,
+            isHoldingWeaponPointer,
+            aimWeaponPointer,
+            aimWeapon2Pointer,
+            pauseStatesPointer,
+                mem))
+            {
+                gameProcessName = Process.GetProcessesByName("ROTTR");
 
-            //     if (gameProcessName.Length == 0)
-            //     {
-            //         Console.WriteLine("ROTTR.exe not found. Exiting...\n");
-            //         Environment.Exit(1); // Stop the mod or script from continuing
-            //     }
+                if (gameProcessName.Length == 0)
+                {
+                    Console.WriteLine("ROTTR.exe not found. Exiting...\n");
+                    Environment.Exit(1); // Stop the mod or script from continuing
+                }
 
-            //     p.instructions[4].type = InstructionType.RGBUpdate;
-            //     p.instructions[4].parameters = [controllerIndex, 0, 0, 0]; // Off // Black
+                p.instructions[4].type = InstructionType.RGBUpdate;
+                p.instructions[4].parameters = [controllerIndex, 0, 0, 0]; // Off // Black
 
-            //     p.instructions[2].type = InstructionType.TriggerUpdate;
-            //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
+                p.instructions[2].type = InstructionType.TriggerUpdate;
+                p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
 
-            //     p.instructions[3].type = InstructionType.TriggerUpdate;
-            //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
+                p.instructions[3].type = InstructionType.TriggerUpdate;
+                p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
 
-            //     Send(p);
-            //     Console.WriteLine("Addresses are invalid or zero. Waiting...\n");
-            //     Thread.Sleep(1000);
-            // }
+                Send(p);
+                Console.WriteLine("Addresses are invalid or zero. Waiting...\n");
+                Thread.Sleep(1000);
+            }
 
             try
             {
@@ -446,17 +367,27 @@ namespace DualSenseROTTR
                     // uint isHoldingFireStriker4 = mem.ReadUInt(isHoldingFireStrikerPointer4);
                     // int isHoldingFireStriker5 = mem.SafeReadInt(isHoldingFireStrikerPointer5);
                     // int action = mem.SafeReadInt(actionPointer);
-                    int? value6;
+                    // int? value6;
+                    // try
+                    // {
+                    //     value6 = mem.ReadInt(cutscenePointer);
+                    // }
+                    // catch
+                    // {
+                    //     value6 = 0;
+                    // }
+                    // int cutscene = value6 <= -1 || value6 == null ? 0 : (int)value6;
+
+                    float? value8;
                     try
                     {
-                        value6 = mem.ReadInt(cutscenePointer);
+                        value8 = mem.ReadFloat(aimWeapon2Pointer);
                     }
                     catch
                     {
-                        value6 = 0;
+                        value8 = 0;
                     }
-                    int cutscene = value6 <= -1 || value6 == null ? 0 : (int)value6;
-
+                    float isAimingWeapon2 = value8 <= -1 || value8 == null ? 0 : (float)value8;
                     // int? value7;
                     // try
                     // {
@@ -508,7 +439,7 @@ namespace DualSenseROTTR
                     //  // the last boolean condition is for the cutscene at the intro bunker where Lara is holding a torch while having a bow equipped and aquiring the pick axe for the first time. It will keep the Torch LED light active only during this specific cutscene
                     // bool isHoldingTorchAndHasBowInCutscene = isHoldingTorch && (cave == 8 || secondCave == 8) && location == 1 && isAimingWeapon == 1 && default_weapon_type == 978781608 && dualPistols == 597;
 
-                    Console.WriteLine($"Weapon Type: {weapon_type} | Is Holding Weapon: {isHoldingWeapon} | Is Aiming: {isAimingWeapon} | Pause States: {pauseStates} | Cutscene: {cutscene}");
+                    Console.WriteLine($"Weapon Type: {weapon_type} | Is Holding Weapon: {isHoldingWeapon} | Is Aiming Weapon: {isAimingWeapon} | Is Aiming Weapon 2: {isAimingWeapon2} | Pause States: {pauseStates}");
                     if (
                         // false
                         // default_weapon_type == 0 || isAimingWeapon == 1 || 
@@ -788,7 +719,7 @@ namespace DualSenseROTTR
                             //                                                                      // p.instructions[4].parameters = [controllerIndex, 0, 191, 0]; // 75% dimmer
                             //     }
                             // 256 is for aiming a weapon
-                            if ((isAimingWeapon == 16 || isAimingWeapon > 0) && isHoldingWeapon == 65537)
+                            if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 160];
@@ -871,7 +802,7 @@ namespace DualSenseROTTR
                             // previousShootWeaponState1 = currentShootWeaponState;
                             // previousShootWeaponState = currentShootWeaponState;
 
-                            if ((isAimingWeapon == 16 || isAimingWeapon > 0) && isHoldingWeapon == 65537)
+                            if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             {
                                 // Bow effect
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -930,7 +861,7 @@ namespace DualSenseROTTR
 
 
                             // 256 is for aiming a weapon
-                            if ((isAimingWeapon == 16 || isAimingWeapon > 0) && isHoldingWeapon == 65537)
+                            if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
@@ -993,7 +924,7 @@ namespace DualSenseROTTR
 
                             // previousShootWeaponState = currentShootWeaponState;
 
-                            if ((isAimingWeapon == 16 || isAimingWeapon > 0) && isHoldingWeapon == 65537)
+                            if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             {
                                 // Hand gun or Pistol:
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -1045,7 +976,7 @@ namespace DualSenseROTTR
                             //                                                                        // p.instructions[4].parameters = [controllerIndex, 191, 124, 0]; // 75% dimmer
                             //     }
                             // 256 is for aiming a weapon
-                            if ((isAimingWeapon == 16 || isAimingWeapon > 0) && isHoldingWeapon == 65537)
+                            if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
@@ -1174,7 +1105,7 @@ namespace DualSenseROTTR
                             //                                                                      // p.instructions[4].parameters = [controllerIndex, 191, 0, 0]; // 75% dimmer
                             //     }
                             // 256 is for aiming a weapon
-                            if ((isAimingWeapon == 16 || isAimingWeapon > 0) && isHoldingWeapon == 65537)
+                            if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
@@ -1240,7 +1171,7 @@ namespace DualSenseROTTR
 
                             // Console.WriteLine($"currentShootWeaponState: {currentShootWeaponState}, previousShootWeaponState: {previousShootWeaponState}, shootWeaponState: {shootWeaponState}");
 
-                            if ((isAimingWeapon == 16 || isAimingWeapon > 0) && isHoldingWeapon == 65537)
+                            if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             {
                                 // Shotgun or any heavy gun:
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -1312,7 +1243,7 @@ namespace DualSenseROTTR
 
                             if (bytesReceivedFromServer.Length > 0)
                             {
-                                Console.WriteLine("Shadow of the Tomb Raider DualSense Mod Initialized\n");
+                                Console.WriteLine("Rise of the Tomb Raider DualSense Mod Initialized\n");
                                 ServerResponse ServerResponseJson = JsonConvert.DeserializeObject<ServerResponse>($"{Encoding.ASCII.GetString(bytesReceivedFromServer, 0, bytesReceivedFromServer.Length)}")!;
                                 Console.WriteLine("===================================================================");
                                 Console.WriteLine($"Status: {ServerResponseJson!.Status}");
