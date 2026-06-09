@@ -12,8 +12,8 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("DualSenseROTTR")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.8.3.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb4e1401e5bf1b984d432c9e57ae1ac45c915d2e")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c790b3a4c5a65fe876ed5f3098e964ef0efd1ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("DualSenseROTTR")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DualSenseROTTR")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
