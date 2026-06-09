@@ -5,9 +5,6 @@ C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\DualSen
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\DualSenseROTTR.pdb
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\HidSharp.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\Newtonsoft.Json.dll
-C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\SharpDX.dll
-C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\SharpDX.DirectInput.dll
-C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\Memory.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Debug\net9.0\DualSenseROTTR.csproj.AssemblyReference.cache
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Debug\net9.0\DualSenseROTTR.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Debug\net9.0\DualSenseROTTR.AssemblyInfoInputs.cache

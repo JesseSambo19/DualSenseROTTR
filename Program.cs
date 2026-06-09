@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using Memory;
-using SharpDX.DirectInput;
+// using Memory;
+// using SharpDX.DirectInput;
 
 namespace DualSenseROTTR
 {
@@ -27,11 +27,17 @@ namespace DualSenseROTTR
 
         public static IntPtr baseAddress;
 
-        public static string weaponTypePointer;
-        public static string isHoldingWeaponPointer;
-        public static string aimWeaponPointer;
-        public static string aimWeapon2Pointer;
-        public static string pauseStatesPointer;
+        // public static string weaponTypePointer;
+        // public static string isHoldingWeaponPointer;
+        // public static string aimWeaponPointer;
+        // public static string aimWeapon2Pointer;
+        // public static string pauseStatesPointer;
+
+        public static IntPtr weaponTypePointer;
+        public static IntPtr isHoldingWeaponPointer;
+        public static IntPtr aimWeaponPointer;
+        public static IntPtr aimWeapon2Pointer;
+        public static IntPtr pauseStatesPointer;
 
 
         static void Connect()
@@ -142,16 +148,16 @@ namespace DualSenseROTTR
 
             Console.WriteLine("Monitoring game process...\n");
 
-            Mem mem = new();
+            MemoryReader mem = new();
 
             // Open the game process
             mem.OpenProcess("ROTTR");
             // Get the base address from game process
-            // baseAddress = mem.GetModuleBase("ROTTR.exe");
+            baseAddress = mem.GetModuleBase("ROTTR.exe");
 
             Console.WriteLine("Rise of the Tomb Raider DualSense Mod Initializing...\n");
 
-            Functions.CheckPlatform(platform, fileVersion!, versionInfo!.ProductVersion!);
+            Functions.CheckPlatform(platform, fileVersion!, versionInfo!.ProductVersion!, mem);
 
             Packet p = new()
             {
@@ -285,159 +291,13 @@ namespace DualSenseROTTR
                     // bool holdingLeftTrigger = xinputResult == 0 ? (xinputResult == 0) && (controllerState.Gamepad.bLeftTrigger > 140) : true;
                     bool holdingLeftTrigger = xinputResult != 0 || leftTriggerPressed;
 
-                    // string weapon_type = mem.SafeReadString(weaponPointer);
-                    int? value;
-                    try
-                    {
-                        value = mem.ReadInt(weaponTypePointer);
-                    }
-                    catch
-                    {
-                        value = 0;
-                    }
-                    int weapon_type = value <= -1 || value == null ? 0 : (int)value;
-                    int? value2;
-                    try
-                    {
-                        value2 = mem.ReadInt(isHoldingWeaponPointer);
-                    }
-                    catch
-                    {
-                        value2 = 0;
-                    }
-                    int isHoldingWeapon = value2 <= -1 || value2 == null ? 0 : (int)value2;
-                    // uint default_weapon_type = mem.SafeReadUInt(defaultWeaponPointer);
-                    // // string aim_weapon_name = mem.SafeReadString(aimWeaponNamePointer);
-                    // int isAimingWeapon = mem.SafeReadInt(aimWeaponPointer);
-                    int? value3;
-                    try
-                    {
-                        value3 = mem.ReadInt(aimWeaponPointer);
-                    }
-                    catch
-                    {
-                        value3 = 0;
-                    }
-                    int isAimingWeapon = value3 <= -1 || value3 == null ? 0 : (int)value3;
-                    // int mainAmmo = mem.SafeReadInt(mainAmmoPointer);
-                    // int grenadeAmmo = mem.SafeReadInt(grenadeAmmoPointer);
-                    // int pauseStates = mem.SafeReadInt(pauseStatesPointer);
-                    int? value4;
-                    try
-                    {
-                        value4 = mem.ReadInt(pauseStatesPointer);
-                    }
-                    catch
-                    {
-                        value4 = 0;
-                    }
-                    int pauseStates = value4 <= -1 || value4 == null ? 0 : (int)value4;
-                    // int menuAndLoadingScreens = mem.SafeReadInt(menuAndLoadingScreensPointer);
-                    // int arrowRopeAmmo = mem.SafeReadInt(arrowRopeAmmoPointer);
-                    // int drawBow = mem.ReadInt(drawBowPointer);
-                    // // int shootWeaponCounter = mem.SafeReadInt(shootWeaponCounterPointer);
-                    // int shootArrowCounter = mem.SafeReadInt(shootArrowCounterPointer);
-                    // int shootGrenadeCounter = mem.SafeReadInt(shootGrenadeCounterPointer);
-                    // int shootHandgunCounter = mem.SafeReadInt(shootHandgunCounterPointer);
-                    // int shootShotgunCounter = mem.SafeReadInt(shootShotgunCounterPointer);
-                    // int shootWeaponState = mem.ReadInt(shootWeaponStatePointer);
-                    // int shootWeaponState1 = mem.ReadInt(shootWeaponStatePointer1);
-                    // int? value5;
-                    // try
-                    // {
-                    //     value5 = mem.ReadInt(shootWeaponStatePointer);
-                    // }
-                    // catch
-                    // {
-                    //     value5 = 0;
-                    // }
-                    // int shootWeaponState = value5 <= -1 || value5 == null ? 0 : (int)value5;
-                    // int edge = mem.SafeReadInt(edgePointer);
-                    // int dualPistols = mem.SafeReadInt(dualPistolsPointer);
-                    // int traversal = mem.ReadInt(traversalPointer);
-                    // int isHoldingWeapon2 = mem.SafeReadInt(isHoldingWeapon2Pointer);
-                    // int backupAmmo = mem.SafeReadInt(backupAmmoPointer);
-                    // // int totalAmmoCapacity = mem.SafeReadInt(totalAmmoCapacityPointer);
-                    // int cave = mem.SafeReadInt(cavePointer);
-                    // int quickTimeEvent = mem.SafeReadInt(quickTimeEventPointer);
-                    // int location = mem.SafeReadInt(locationPointer);
-                    // int secondCave = mem.SafeReadInt(secondCavePointer);
-                    // int isHoldingFireStriker1 = mem.SafeReadInt(isHoldingFireStrikerPointer1);
-                    // int isHoldingFireStriker3 = mem.SafeReadInt(isHoldingFireStrikerPointer3);
-                    // uint isHoldingFireStriker4 = mem.ReadUInt(isHoldingFireStrikerPointer4);
-                    // int isHoldingFireStriker5 = mem.SafeReadInt(isHoldingFireStrikerPointer5);
-                    // int action = mem.SafeReadInt(actionPointer);
-                    // int? value6;
-                    // try
-                    // {
-                    //     value6 = mem.ReadInt(cutscenePointer);
-                    // }
-                    // catch
-                    // {
-                    //     value6 = 0;
-                    // }
-                    // int cutscene = value6 <= -1 || value6 == null ? 0 : (int)value6;
+                    Functions.CheckPlatform(platform, fileVersion!, versionInfo!.ProductVersion!, mem);
 
-                    float? value8;
-                    try
-                    {
-                        value8 = mem.ReadFloat(aimWeapon2Pointer);
-                    }
-                    catch
-                    {
-                        value8 = 0;
-                    }
-                    float isAimingWeapon2 = value8 <= -1 || value8 == null ? 0 : (float)value8;
-                    // int? value7;
-                    // try
-                    // {
-                    //     value7 = mem.ReadInt(machinegunAmmoPointer);
-                    // }
-                    // catch
-                    // {
-                    //     value7 = 0;
-                    // }
-                    // int machinegunAmmo = value7 <= -1 || value7 == null ? 0 : (int)value7;
-                    // int? value8;
-                    // try
-                    // {
-                    //     value8 = mem.ReadInt(isHoldingPickAxePointer);
-                    // }
-                    // catch
-                    // {
-                    //     value8 = 0;
-                    // }
-                    // int isHoldingPickAxe = value8 <= -1 || value8 == null ? 0 : (int)value8;
-                    // int? value9;
-                    // try
-                    // {
-                    //     value9 = mem.ReadInt(cutscene2Pointer);
-                    // }
-                    // catch
-                    // {
-                    //     value9 = 0;
-                    // }
-                    // int cutscene2 = value9 <= -1 || value9 == null ? 0 : (int)value9;
-
-                    // // second
-                    // int secondIsHoldingWeapon2 = mem.SafeReadInt(secondIsHoldingWeapon2Pointer);
-                    // int secondIsHoldingFireStriker1 = mem.SafeReadInt(secondIsHoldingFireStrikerPointer1);
-                    // int secondIsHoldingFireStriker3 = mem.SafeReadInt(secondIsHoldingFireStrikerPointer3);
-                    // uint secondIsHoldingFireStriker4 = mem.ReadUInt(secondIsHoldingFireStrikerPointer4);
-                    // int secondIsHoldingFireStriker5 = mem.SafeReadInt(secondIsHoldingFireStrikerPointer5);
-                    // int secondAction = mem.SafeReadInt(secondActionPointer);
-
-                    // bool isHoldingTorchAndPistol = default_weapon_type == 31985484 && ((isHoldingFireStriker1 > 0 && isHoldingWeapon2 > 0 && isHoldingWeapon2 != 69 && isHoldingWeapon2 != 704 && isHoldingFireStriker3 == 0 && isHoldingFireStriker5 == 0 && action > 0) || (secondIsHoldingFireStriker1 > 0 && secondIsHoldingWeapon2 > 0 && secondIsHoldingWeapon2 != 69 && secondIsHoldingWeapon2 != 704 && secondIsHoldingFireStriker3 == 0 && secondIsHoldingFireStriker5 == 0 && secondAction > 0));
-
-                    // // by having isHoldingTorchAndPistol here helps to detect two states in one variable
-                    // bool justHoldingTorch1 = isHoldingFireStriker3 == 0 && isHoldingFireStriker5 == 0 && (action == 0 || (action > 0 && location == 2 && (dualPistols == 567 || dualPistols == 569 || dualPistols == 571) && default_weapon_type == 978781608));
-                    // bool justHoldingTorch2 = (isHoldingFireStriker3 > 0 || isHoldingFireStriker4 > 0) && isHoldingFireStriker5 == 0 && action == 0 && (dualPistols == 566 || dualPistols == 587 || dualPistols == 589 || dualPistols == 594 || traversal == 512);
-                    // bool secondJustHoldingTorch1 = secondIsHoldingFireStriker3 == 0 && secondIsHoldingFireStriker5 == 0 && (secondAction == 0 || (secondAction > 0 && location == 2 && (dualPistols == 567 || dualPistols == 569 || dualPistols == 571) && default_weapon_type == 978781608));
-                    // bool secondJustHoldingTorch2 = (secondIsHoldingFireStriker3 > 0 || secondIsHoldingFireStriker4 > 0) && secondIsHoldingFireStriker5 == 0 && secondAction == 0 && (dualPistols == 566 || dualPistols == 587 || dualPistols == 589 || dualPistols == 594 || traversal == 512);
-                    // bool isHoldingTorch = isHoldingTorchAndPistol || (edge != 177 && edge != 181 && ((isHoldingFireStriker1 > 0 && isHoldingWeapon2 == 0 && (justHoldingTorch1 || justHoldingTorch2)) || (secondIsHoldingFireStriker1 > 0 && secondIsHoldingWeapon2 == 0 && (secondJustHoldingTorch1 || secondJustHoldingTorch2))));
-                    // bool isHoldingTorchAndNoWeapons = default_weapon_type == 0 && ((isHoldingTorch && isAimingWeapon == 1) || (isHoldingFireStriker1 > 0 && isHoldingWeapon2 == 0 && isHoldingFireStriker3 >= 0 && isHoldingFireStriker4 >= 0 && isHoldingFireStriker5 == 0 && (action == 0 || (action > 0 && dualPistols == 575))) || (secondIsHoldingFireStriker1 > 0 && secondIsHoldingWeapon2 == 0 && secondIsHoldingFireStriker3 >= 0 && secondIsHoldingFireStriker4 >= 0 && secondIsHoldingFireStriker5 == 0 && (secondAction == 0 || (secondAction > 0 && dualPistols == 575))));
-                    //  // the last boolean condition is for the cutscene at the intro bunker where Lara is holding a torch while having a bow equipped and aquiring the pick axe for the first time. It will keep the Torch LED light active only during this specific cutscene
-                    // bool isHoldingTorchAndHasBowInCutscene = isHoldingTorch && (cave == 8 || secondCave == 8) && location == 1 && isAimingWeapon == 1 && default_weapon_type == 978781608 && dualPistols == 597;
+                    int weapon_type = mem.SafeReadInt(weaponTypePointer);
+                    int isHoldingWeapon = mem.SafeReadInt(isHoldingWeaponPointer);
+                    int isAimingWeapon = mem.SafeReadInt(aimWeaponPointer);
+                    int pauseStates = mem.SafeReadInt(pauseStatesPointer);
+                    float isAimingWeapon2 = mem.SafeReadFloat(aimWeapon2Pointer);
 
                     Console.WriteLine($"Weapon Type: {weapon_type} | Is Holding Weapon: {isHoldingWeapon} | Is Aiming Weapon: {isAimingWeapon} | Is Aiming Weapon 2: {isAimingWeapon2} | Pause States: {pauseStates}");
                     if (
