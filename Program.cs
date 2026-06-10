@@ -185,14 +185,22 @@ namespace DualSenseROTTR
                     Environment.Exit(1); // Stop the mod or script from continuing
                 }
 
-                p.instructions[4].type = InstructionType.RGBUpdate;
-                p.instructions[4].parameters = [controllerIndex, 0, 0, 0]; // Off // Black
-
                 p.instructions[2].type = InstructionType.TriggerUpdate;
                 p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
 
                 p.instructions[3].type = InstructionType.TriggerUpdate;
                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
+
+                p.instructions[4].type = InstructionType.RGBUpdate;
+                p.instructions[4].parameters = [controllerIndex, 0, 0, 0]; // Off // Black
+
+                // Player number
+                p.instructions[5].type = InstructionType.PlayerLED;
+                p.instructions[5].parameters = [controllerIndex, false, false, true, false, false];
+
+                // Player LED for new revision controllers
+                p.instructions[6].type = InstructionType.PlayerLEDNewRevision;
+                p.instructions[6].parameters = [controllerIndex, PlayerLEDNewRevision.One];
 
                 Send(p);
                 Console.WriteLine("Addresses are invalid or zero. Waiting...\n");

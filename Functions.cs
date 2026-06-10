@@ -55,8 +55,8 @@ namespace DualSenseROTTR
                 // Program.aimWeapon2Pointer = "ROTTR.exe+014AB068,138,978,958,148,50,840,110";
                 // Program.pauseStatesPointer = "ROTTR.exe+02CF8910,78,118,28,B8,1D0,0,CB8";
 
-                Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x010E1CD0,  new int[] { 0x48, 0x50, 0x10, 0xB0, 0x2D0, 0x80, 0x2F8 });
-                Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x018DDCA8,  new int[] { 0x60, 0x50, 0x10, 0xB8, 0x2A8, 0x8, 0x5A0 });
+                Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x02C196F0,  new int[] { 0x398, 0x8, 0x388, 0x8, 0x390, 0x8, 0x2E0 });
+                Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02C27388,  new int[] { 0x2E0, 0x8, 0x2D0, 0x8, 0x2A8, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x014AB068,  new int[] {0x960, 0x148, 0x38, 0x30, 0x20, 0x88, 0x28 });
                 Program.aimWeapon2Pointer = Tuple.Create(Program.baseAddress + 0x014AB068, new int[] { 0x138, 0x978, 0x958, 0x148, 0x50, 0x840, 0x110 });
                 Program.pauseStatesPointer = Tuple.Create(Program.baseAddress + 0x02CF8910, new int[] { 0x78, 0x118, 0x28, 0xB8, 0x1D0, 0x0, 0xCB8 });
@@ -69,8 +69,8 @@ namespace DualSenseROTTR
                 // Program.aimWeapon2Pointer = "ROTTR.exe+0161F0B0,148,50,858,138,960,970,110";
                 // Program.pauseStatesPointer = "ROTTR.exe+02E6D018,450,58,208,0,28,1E0,DF8";
 
-                Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x02D583E8, new int[] { 0x10, 0x388, 0x300, 0x48, 0x870, 0xB0, 0x2E0 });
-                Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x01105378,  new int[] { 0x60, 0x870, 0xB8, 0x2A8, 0x8, 0x5A0 });
+                Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x02D8D6F0,  new int[] { 0x3A8, 0x8, 0x380, 0x8, 0x2D0, 0xC0, 0x2F8 });
+                Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02D9B388,  new int[] { 0x298, 0x30, 0x8, 0x2A8, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x0161F0B0,  new int[] { 0x978, 0x148, 0x38, 0x20, 0x68, 0x88, 0x28 });
                 Program.aimWeapon2Pointer = Tuple.Create(Program.baseAddress + 0x0161F0B0, new int[] { 0x148, 0x50, 0x858, 0x138, 0x960, 0x970, 0x110 });
                 Program.pauseStatesPointer = Tuple.Create(Program.baseAddress + 0x02E6D018, new int[] { 0x450, 0x58, 0x208, 0x0, 0x28, 0x1E0, 0xDF8 });
@@ -83,7 +83,7 @@ namespace DualSenseROTTR
                 // Program.aimWeapon2Pointer = "ROTTR.exe+015678D8,148,50,858,138,958,960,110";
                 // Program.pauseStatesPointer = "ROTTR.exe+02CD4B50,8,188,10,0,E38";
 
-                Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x02CD5EE8,  new int[] { 0x60, 0x50, 0x10, 0xB0, 0x2D0, 0x280, 0x2F8 });
+                Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x02CD5E60,  new int[] { 0x3A8, 0x8, 0x2D0, 0x100, 0x3A0, 0x8, 0x2E0 });
                 Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02CE3BD0,  new int[] { 0x298, 0x0, 0x8, 0x2A8, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x015678D8,  new int[] { 0x138, 0x978, 0x148, 0x20, 0x88, 0x28 });
                 Program.aimWeapon2Pointer = Tuple.Create(Program.baseAddress + 0x015678D8, new int[] { 0x148, 0x50, 0x858, 0x138, 0x958, 0x960, 0x110 });

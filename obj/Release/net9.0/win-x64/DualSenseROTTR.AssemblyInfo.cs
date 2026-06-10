@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DualSenseROTTR")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3276528803424643f9d3c377ff3e0689c6ae2bad")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8a89b6d768d4cd4c07bb92c08bff3f21a1fd32e")]
 [assembly: System.Reflection.AssemblyProductAttribute("DualSenseROTTR")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DualSenseROTTR")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
