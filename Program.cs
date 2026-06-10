@@ -389,7 +389,8 @@ namespace DualSenseROTTR
 
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
-                            if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25)
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 160];
@@ -407,7 +408,8 @@ namespace DualSenseROTTR
 
 
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
-                            if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25)
                             {
                                 // Bow effect
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -436,7 +438,8 @@ namespace DualSenseROTTR
 
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
-                            if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25)
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
@@ -468,7 +471,8 @@ namespace DualSenseROTTR
                             }
 
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
-                            if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25)
                             {
                                 // Hand gun or Pistol:
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -501,7 +505,8 @@ namespace DualSenseROTTR
                         {
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
-                            if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25)
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
@@ -583,7 +588,8 @@ namespace DualSenseROTTR
                         {
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
-                            if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25)
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
@@ -619,7 +625,8 @@ namespace DualSenseROTTR
                             // Console.WriteLine($"currentShootWeaponState: {currentShootWeaponState}, previousShootWeaponState: {previousShootWeaponState}, shootWeaponState: {shootWeaponState}");
 
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
-                            if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25)
                             {
                                 // Shotgun or any heavy gun:
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
