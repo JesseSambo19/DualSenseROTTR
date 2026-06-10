@@ -33,18 +33,18 @@ namespace DualSenseROTTR
         // public static string aimWeapon2Pointer;
         // public static string pauseStatesPointer;
 
-        public static IntPtr weaponTypePointer;
-        public static IntPtr isHoldingWeaponPointer;
-        public static IntPtr aimWeaponPointer;
-        public static IntPtr aimWeapon2Pointer;
-        public static IntPtr pauseStatesPointer;
+        public static Tuple<IntPtr, int[]>? weaponTypePointer;
+        public static Tuple<IntPtr, int[]>? isHoldingWeaponPointer;
+        public static Tuple<IntPtr, int[]>? aimWeaponPointer;
+        public static Tuple<IntPtr, int[]>? aimWeapon2Pointer;
+        public static Tuple<IntPtr, int[]>? pauseStatesPointer;
 
 
         static void Connect()
         {
             client = new UdpClient();
-            var portNumber = File.ReadAllText(@"C:\Temp\DualSenseX\DualSenseX_PortNumber.txt");
-            // var portNumber = DSXPortHelper.GetPortNumber();
+            // var portNumber = File.ReadAllText(@"C:\Temp\DualSenseX\DualSenseX_PortNumber.txt");
+            var portNumber = DSXPortHelper.GetPortNumber();
             endPoint = new IPEndPoint(Triggers.localhost, Convert.ToInt32(portNumber));
             Console.WriteLine($"Port number found is: {portNumber}\n");
         }
@@ -94,7 +94,7 @@ namespace DualSenseROTTR
             var gogInfoFile = Directory.GetFiles(exeDirectory, "goggame-*.info");
             var gogFiles = Directory.GetFiles(exeDirectory, "goggame-*.*");
 
-            if (File.Exists(Path.Combine(exeDirectory, "steam_api64.dll")) && !File.Exists(Path.Combine(exeDirectory, "Galaxy64.dll")) || gogInfoFile.Length == 0 || gogFiles.Length == 0)
+            if (File.Exists(Path.Combine(exeDirectory, "steam_api64.dll")) && !File.Exists(Path.Combine(exeDirectory, "Galaxy64.dll")) && gogInfoFile.Length == 0 && gogFiles.Length == 0)
             {
                 platform = "Steam";
             }
@@ -212,21 +212,21 @@ namespace DualSenseROTTR
                     // Since DSX makes DualSense appear as Xbox controller, we can read trigger states
                     uint xinputResult = XInputReader.SafeXInputGetState((uint)controllerIndex, ref controllerState); // controllerIndex = 0 = first controller
                     // xinputResult: Windows error code (0 = success, 1167 = no controller, etc.)
-                    
+
                     bool leftTriggerPressed = (xinputResult == 0) && (controllerState.Gamepad.bLeftTrigger > 40); // Higher threshold to avoid noise
 
                     // bool holdingLeftTrigger = xinputResult == 0 ? (xinputResult == 0) && (controllerState.Gamepad.bLeftTrigger > 140) : true;
                     bool holdingLeftTrigger = xinputResult != 0 || leftTriggerPressed;
 
-                    Functions.CheckPlatform(platform, fileVersion!, versionInfo!.ProductVersion!, mem);
+                    // Functions.CheckPlatform(platform, fileVersion!, versionInfo!.ProductVersion!, mem);
 
-                    int weapon_type = mem.SafeReadInt(weaponTypePointer);
-                    int isHoldingWeapon = mem.SafeReadInt(isHoldingWeaponPointer);
-                    int isAimingWeapon = mem.SafeReadInt(aimWeaponPointer);
-                    int pauseStates = mem.SafeReadInt(pauseStatesPointer);
-                    float isAimingWeapon2 = mem.SafeReadFloat(aimWeapon2Pointer);
+                    int weapon_type = mem.SafeReadInt(weaponTypePointer!);
+                    int isHoldingWeapon = mem.SafeReadInt(isHoldingWeaponPointer!);
+                    int isAimingWeapon = mem.SafeReadInt(aimWeaponPointer!);
+                    int pauseStates = mem.SafeReadInt(pauseStatesPointer!);
+                    float isAimingWeapon2 = mem.SafeReadFloat(aimWeapon2Pointer!);
 
-                    Console.WriteLine($"Weapon Type: {weapon_type} | Is Holding Weapon: {isHoldingWeapon} | Is Aiming Weapon: {isAimingWeapon} | Is Aiming Weapon 2: {isAimingWeapon2} | Pause States: {pauseStates}");
+                    // Console.WriteLine($"Weapon Type: {weapon_type} | Is Holding Weapon: {isHoldingWeapon} | Is Aiming Weapon: {isAimingWeapon} | Is Aiming Weapon 2: {isAimingWeapon2} | Pause States: {pauseStates}");
                     if (
                         // false
                         // default_weapon_type == 0 || isAimingWeapon == 1 || 
@@ -386,7 +386,7 @@ namespace DualSenseROTTR
                          //  || weapon_type == 5273748904 long
                          )
                         {
-                           
+
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
@@ -400,7 +400,7 @@ namespace DualSenseROTTR
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
                             }
 
-                            
+
                             // Reset left trigger to off
                             p.instructions[2].type = InstructionType.TriggerUpdate;
                             p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];

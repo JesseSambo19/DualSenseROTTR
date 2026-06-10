@@ -57,38 +57,43 @@ namespace DualSenseROTTR
             return IntPtr.Zero;
         }
 
-        public int ReadInt(IntPtr address)
+        public int ReadInt(Tuple<IntPtr, int[]> address)
         {
+            IntPtr resolvedAddress = ResolvePointer(address.Item1, address.Item2);
             byte[] buffer = new byte[4];
-            ReadProcessMemory(processHandle, address, buffer, buffer.Length, out _);
+            ReadProcessMemory(processHandle, resolvedAddress, buffer, buffer.Length, out _);
             return BitConverter.ToInt32(buffer, 0);
         }
 
-        public uint ReadUInt(IntPtr address)
+        public uint ReadUInt(Tuple<IntPtr, int[]> address)
         {
+            IntPtr resolvedAddress = ResolvePointer(address.Item1, address.Item2);
             byte[] buffer = new byte[4];
-            ReadProcessMemory(processHandle, address, buffer, buffer.Length, out _);
+            ReadProcessMemory(processHandle, resolvedAddress, buffer, buffer.Length, out _);
             return BitConverter.ToUInt32(buffer, 0);
         }
 
-        public float ReadFloat(IntPtr address)
+        public float ReadFloat(Tuple<IntPtr, int[]> address)
         {
+            IntPtr resolvedAddress = ResolvePointer(address.Item1, address.Item2);
             byte[] buffer = new byte[4];
-            ReadProcessMemory(processHandle, address, buffer, buffer.Length, out _);
+            ReadProcessMemory(processHandle, resolvedAddress, buffer, buffer.Length, out _);
             return BitConverter.ToSingle(buffer, 0);
         }
 
-        public double ReadDouble(IntPtr address)
+        public double ReadDouble(Tuple<IntPtr, int[]> address)
         {
+            IntPtr resolvedAddress = ResolvePointer(address.Item1, address.Item2);
             byte[] buffer = new byte[8];
-            ReadProcessMemory(processHandle, address, buffer, buffer.Length, out _);
+            ReadProcessMemory(processHandle, resolvedAddress, buffer, buffer.Length, out _);
             return BitConverter.ToDouble(buffer, 0);
         }
 
-        public string ReadString(IntPtr address, int maxLength = 32)
+        public string ReadString(Tuple<IntPtr, int[]> address, int maxLength = 32)
         {
+            IntPtr resolvedAddress = ResolvePointer(address.Item1, address.Item2);
             byte[] buffer = new byte[maxLength];
-            ReadProcessMemory(processHandle, address, buffer, buffer.Length, out _);
+            ReadProcessMemory(processHandle, resolvedAddress, buffer, buffer.Length, out _);
             int length = Array.IndexOf(buffer, (byte)0);
             if (length < 0) length = maxLength;
             return Encoding.UTF8.GetString(buffer, 0, length);
@@ -110,7 +115,7 @@ namespace DualSenseROTTR
             return address;
         }
 
-        public int SafeReadInt(IntPtr pointer, int fallback = 0)
+        public int SafeReadInt(Tuple<IntPtr, int[]> pointer, int fallback = 0)
         {
             try
             {
@@ -120,7 +125,7 @@ namespace DualSenseROTTR
             catch { return fallback; }
         }
 
-        public uint SafeReadUInt(IntPtr pointer, uint fallback = 0)
+        public uint SafeReadUInt(Tuple<IntPtr, int[]> pointer, uint fallback = 0)
         {
             try
             {
@@ -130,7 +135,7 @@ namespace DualSenseROTTR
             catch { return fallback; }
         }
 
-        public float SafeReadFloat(IntPtr pointer, float fallback = 0)
+        public float SafeReadFloat(Tuple<IntPtr, int[]> pointer, float fallback = 0)
         {
             try
             {
@@ -140,7 +145,7 @@ namespace DualSenseROTTR
             catch { return fallback; }
         }
 
-        public string SafeReadString(IntPtr pointer)
+        public string SafeReadString(Tuple<IntPtr, int[]> pointer)
         {
             try
             {
