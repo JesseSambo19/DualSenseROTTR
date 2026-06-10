@@ -167,47 +167,7 @@ namespace DualSenseROTTR
 
             int controllerIndex = 0;
 
-            bool R1 = false;
-            bool r1Held = false;
-            DateTime r1StartTime = DateTime.MinValue;
-
-            bool R2 = false;
-            bool r2Held = false;
-            DateTime r2StartTime = DateTime.MinValue;
-
-            // this keeps track of the previous ammo count
-            int previousBowAmmo = -1;
-            int previousBowAmmo2 = -1;
-            int previousBackupBowAmmo = -1;
-            int previousBackupBowAmmo2 = -1;
-            int previousHandgunAmmo = -1;
-            int previousHandgunAmmo2 = -1;
-            int previousShotgunAmmo = -1;
-            int previousShotgunAmmo2 = -1;
-            int previousMachinegunAmmo = -1;
-            int previousMachinegunAmmo2 = -1;
-            int previousGrenadeAmmo = -1;
-            // int previousShootWeapon = -1;
-            int previousShootWeaponState = -1;
-            int previousShootWeaponState1 = -1;
-            int previousShootArrow = -1;
-            int previousShootGrenade = -1;
-            int previousShootHandgun = -1;
-            int previousShootShotgun = -1;
-            // string previousAimWeaponName = "";
-            string previousWeaponType = "";
             int previousWeaponTypeId = 0;
-            uint previousWeaponTypeId2 = 0;
-
-            bool wasBowShot = false;
-            bool wasHandgunShot = false;
-            // bool wasMachinegunShot = false;
-            bool wasShotgunShot = false;
-
-            // machinegun trigger state
-            bool machinegunTriggerActive = false;
-            long lastMachinegunShotTime = 0;
-            const int MACHINE_STOP_TIMEOUT_MS = 150; // 100 - 150
 
             while (!Functions.IsValidMemory(
                 weaponTypePointer,
@@ -244,48 +204,15 @@ namespace DualSenseROTTR
                 // Controller state for trigger reading
                 XINPUT_STATE controllerState = new();
 
-                //  // Initialize DirectInput
-                // var directInput = new DirectInput();
-
-                // // Find a connected DualSense controller
-                // var joystickGuid = Guid.Empty;
-
-                // foreach (var deviceInstance in directInput.GetDevices(SharpDX.DirectInput.DeviceType.Gamepad, DeviceEnumerationFlags.AttachedOnly))
-                // {
-                //     joystickGuid = deviceInstance.InstanceGuid;
-                //     break;
-                // }
-
-                // // if (joystickGuid == Guid.Empty)
-                // // {
-                // //     Console.WriteLine("No controller found. Please connect a DualSense controller.");
-                // //     return;
-                // // }
-
-                // // Instantiate the controller
-                // var joystick = new Joystick(directInput, joystickGuid);
-                // Console.WriteLine("Controller connected: " + joystick.Information.ProductName);
-
-                // // Acquire the device
-                // joystick.Acquire();
-
                 while (gameProcessName.Length > 0)
                 {
                     gameProcessName = Process.GetProcessesByName("ROTTR");
-
-                    // Poll the controller
-                    // joystick.Poll();
-                    // var state = joystick.GetCurrentState();
-
-                    // Get button states
-                    // var buttons = state.Buttons;
 
                     // Poll controller state from XInput (Windows Xbox controller API)
                     // Since DSX makes DualSense appear as Xbox controller, we can read trigger states
                     uint xinputResult = XInputReader.SafeXInputGetState((uint)controllerIndex, ref controllerState); // controllerIndex = 0 = first controller
                     // xinputResult: Windows error code (0 = success, 1167 = no controller, etc.)
-                    // bool ds4LeftTriggerPressed = DS4Reader.TryReadState(out ds4State) && ds4State.LeftTrigger > 40;
-                    // bool ds4LeftTriggerPressed = state.RotationX > 1000;
+                    
                     bool leftTriggerPressed = (xinputResult == 0) && (controllerState.Gamepad.bLeftTrigger > 40); // Higher threshold to avoid noise
 
                     // bool holdingLeftTrigger = xinputResult == 0 ? (xinputResult == 0) && (controllerState.Gamepad.bLeftTrigger > 140) : true;
@@ -305,127 +232,25 @@ namespace DualSenseROTTR
                         // default_weapon_type == 0 || isAimingWeapon == 1 || 
                         weapon_type == 0 || (weapon_type != 1 && weapon_type != 2 && weapon_type != 3 && weapon_type != 4) ||
                         // pauseStates == 0 || 
-                        pauseStates == 10 || pauseStates == 13 // 12 - play, 10 - pause/start menu, 13 - loading screen, 
-                                                               // || cutscene == 1
-                                                               // || (cutscene == 0 && cutscene2 > 0)  // cutscene2 == 7 (realtime cutscene video) / 1 / 2 (minor cutscenes)
-                                                               // || menuAndLoadingScreens == 0
+                        pauseStates == 10 || pauseStates == 13 // 12 - play, 10 - pause/start menu, 13 - loading screen
                         ) // isAimingWeapon == 1 for cutscenes, pauseStates == 0 for pause and map menus
                     {
-                        // // Torch, Axe and Rope Ascender LEDs won't be active during cutscenes and when Lara doesn't have a weapon equipped
-                        // // if (isAimingWeapon != 1 && default_weapon_type != 0 && (isHoldingWeapon2 == 69 || secondIsHoldingWeapon2 == 69 || isHoldingWeapon2 == 704 || secondIsHoldingWeapon2 == 704 || isHoldingTorch))
-                        //  // Enables Torch LED at the start of the game, which is independent of whether Lara has a weapon equipped (unlike axe/rope LEDs which still require a weapon), but all tool LEDs remain inactive during cutscenes.
-                        // // if (isAimingWeapon != 1 && (default_weapon_type != 0 && (isHoldingWeapon2 == 69 || secondIsHoldingWeapon2 == 69 || isHoldingWeapon2 == 704 || secondIsHoldingWeapon2 == 704) || isHoldingTorch))
-                        // // for the intro where Lara has only a torch, the additional condition is for when lara has a torch, a cutscene is playing and she doesn't have any weapons (preferably only for the intro of the game).
-                        // if (isAimingWeapon != 1 && (default_weapon_type != 0 && (isHoldingWeapon2 == 69 || secondIsHoldingWeapon2 == 69 || isHoldingWeapon2 == 704 || secondIsHoldingWeapon2 == 704) || isHoldingTorch) || isHoldingTorchAndNoWeapons || isHoldingTorchAndHasBowInCutscene)
-                        // {
-                        //     Functions.SetToolLEDColor(isHoldingWeapon2, secondIsHoldingWeapon2, isHoldingTorch, isHoldingTorchAndPistol, controllerIndex, p, isHoldingTorchAndNoWeapons);
-                        // }
-                        // if (isHoldingWeapon == 1) // pick axe
-                        // // if (isHoldingPickAxe == 396) // pick axe
-                        // {
-                        //     p.instructions![4].type = InstructionType.RGBUpdate;
-                        //     // p.instructions[4].parameters = [controllerIndex, 255, 32, 255]; // original
-                        //     // p.instructions[4].parameters = [controllerIndex, 191, 32, 191]; // 75% dimmer original
-                        //     p.instructions[4].parameters = [controllerIndex, 128, 0, 255]; // original
-                        //                                                                    // p.instructions[4].parameters = [controllerIndex, 109, 0, 217]; // 85% dimmer
-                        //                                                                    // p.instructions[4].parameters = [controllerIndex, 96, 0, 191]; // 75% dimmer
-                        // }
+
+                        p.instructions[4].type = InstructionType.RGBUpdate;
+                        // p.instructions[4].parameters = [controllerIndex, 50, 150, 250]; // original
+                        p.instructions[4].parameters = [controllerIndex, 50, 75, 250]; // original
+
                         if (
                         // weapon_type == "" &&
                         // default_weapon_type == 0
-                        // weapon_type == 0 || (weapon_type != 1 && weapon_type != 2 && weapon_type != 3 && weapon_type != 4) || pauseStates == 10
-                        // weapon_type == 0 || 
-                        pauseStates == 0 && isAimingWeapon == 1
+                        weapon_type == 0 || pauseStates == 13
                         ) // Off
                         {
-                            p.instructions[4].type = InstructionType.RGBUpdate;
-                            p.instructions[4].parameters = [controllerIndex, 0, 0, 0];
+                            // p.instructions[4].type = InstructionType.RGBUpdate;
+                            // p.instructions[4].parameters = [controllerIndex, 0, 0, 0];
+
+                            previousWeaponTypeId = 0;
                         }
-                        else
-                        {
-                            p.instructions[4].type = InstructionType.RGBUpdate;
-                            // p.instructions[4].parameters = [controllerIndex, 50, 150, 250]; // original
-                            p.instructions[4].parameters = [controllerIndex, 50, 75, 250]; // original
-                        }
-                        // else if (
-                        // // weapon_type != "" ||
-                        // weapon_type != 0
-                        // )
-                        // {
-                        //     if (
-                        //     // weapon_type.Contains("arrow") ||
-                        //     // weapon_type == 35)
-                        //     weapon_type == 1)
-                        //     {
-                        //         p.instructions[4].type = InstructionType.RGBUpdate;
-                        //         p.instructions[4].parameters = [controllerIndex, 0, 255, 0]; // original
-                        //         // p.instructions[4].parameters = [controllerIndex, 0, 217, 0]; // 85% dimmer
-                        //         // p.instructions[4].parameters = [controllerIndex, 0, 191, 0]; // 75% dimmer
-                        //     }
-                        //     else if (
-                        //     // weapon_type.Contains("handgun") ||
-                        //     // weapon_type == 46)
-                        //     weapon_type == 2)
-                        //     {
-                        //         p.instructions[4].type = InstructionType.RGBUpdate;
-                        //         p.instructions[4].parameters = [controllerIndex, 255, 255, 0]; // original
-                        //         // p.instructions[4].parameters = [controllerIndex, 217, 217, 0]; // 85% dimmer
-                        //         // p.instructions[4].parameters = [controllerIndex, 191, 191, 0]; // 75% dimmer
-                        //     }
-                        //     else if (
-                        //     // weapon_type.Contains("machinegun") ||
-                        //     // weapon_type == 55)
-                        //     weapon_type == 3)
-                        //     {
-                        //         p.instructions[4].type = InstructionType.RGBUpdate;
-                        //         // p.instructions[4].parameters = [controllerIndex, 255, 165, 0]; // orange
-                        //         p.instructions[4].parameters = [controllerIndex, 255, 100, 0]; // modified orange original
-                        //         // p.instructions[4].parameters = [controllerIndex, 217, 85, 0]; // 85% dimmer
-                        //         // p.instructions[4].parameters = [controllerIndex, 191, 124, 0]; // 75% dimmer
-                        //     }
-                        //     else if (
-                        //     // weapon_type.Contains("shotgun") ||
-                        //     // weapon_type == 61)
-                        //     weapon_type == 4)
-                        //     {
-                        //         p.instructions[4].type = InstructionType.RGBUpdate;
-                        //         p.instructions[4].parameters = [controllerIndex, 255, 0, 0]; // original
-                        //         // p.instructions[4].parameters = [controllerIndex, 217, 0, 0]; // 85% dimmer
-                        //         // p.instructions[4].parameters = [controllerIndex, 191, 0, 0]; // 75% dimmer
-                        //     }
-                        // }
-                        // else if (
-                        // // weapon_type == "" &&
-                        // // default_weapon_type == 0
-                        // weapon_type == 0 || pauseStates == 13
-                        // ) // Off
-                        // {
-                        //     p.instructions[4].type = InstructionType.RGBUpdate;
-                        //     p.instructions[4].parameters = [controllerIndex, 0, 0, 0];
-
-                        //     // resets when Lara doesn't have a weapon during loading screens, menus, cutscenes or during gameplay
-                        //     // previousBowAmmo = -1;
-                        //     // previousBowAmmo2 = -1;
-                        //     // previousBackupBowAmmo = -1;
-                        //     // previousBackupBowAmmo2 = -1;
-                        //     // previousHandgunAmmo = -1;
-                        //     // previousHandgunAmmo2 = -1;
-                        //     // previousMachinegunAmmo = -1;
-                        //     // previousMachinegunAmmo2 = -1;
-                        //     // previousGrenadeAmmo = -1;
-                        //     // previousShotgunAmmo = -1;
-                        //     // previousShotgunAmmo2 = -1;
-                        //     // previousShootArrow = -1;
-                        //     // previousShootHandgun = -1;
-                        //     // previousShootGrenade = -1;
-                        //     // previousShootShotgun = -1;
-
-                        //     // previousWeaponType = "";
-                        //     // previousWeaponTypeId = 0;
-                        //     // previousWeaponTypeId2 = 0;
-
-                        //     // lastMachinegunShotTime = 0;
-                        // }
 
                         // // Adaptive triggers for the escape from collapsing cave QTE at the start of the game on L2/LT and R2/RT
                         // if (default_weapon_type == 0 && !isHoldingTorch && !isHoldingTorchAndNoWeapons && dualPistols >= 590 && dualPistols <= 595 && dualPistols != 594 && (cave == 5 || secondCave == 5) && quickTimeEvent == 1 && location == 112 && pauseStates == 1 && menuAndLoadingScreens == 1 && isAimingWeapon != 1)
@@ -561,23 +386,7 @@ namespace DualSenseROTTR
                          //  || weapon_type == 5273748904 long
                          )
                         {
-                            //     if (isHoldingWeapon == 1) // pick axe
-                            // // if (isHoldingPickAxe == 396) // pick axe
-                            //     {
-                            //         p.instructions![4].type = InstructionType.RGBUpdate;
-                            //         // p.instructions[4].parameters = [controllerIndex, 255, 32, 255]; // original
-                            //         // p.instructions[4].parameters = [controllerIndex, 191, 32, 191]; // 75% dimmer original
-                            //         p.instructions[4].parameters = [controllerIndex, 128, 0, 255]; // original
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 109, 0, 217]; // 85% dimmer
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 96, 0, 191]; // 75% dimmer
-                            //     }
-                            //     else
-                            //     {
-                            //         p.instructions[4].type = InstructionType.RGBUpdate;
-                            //         p.instructions[4].parameters = [controllerIndex, 0, 255, 0]; // original
-                            //                                                                      // p.instructions[4].parameters = [controllerIndex, 0, 217, 0]; // 85% dimmer
-                            //                                                                      // p.instructions[4].parameters = [controllerIndex, 0, 191, 0]; // 75% dimmer
-                            //     }
+                           
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
@@ -591,77 +400,11 @@ namespace DualSenseROTTR
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
                             }
 
-                            // if (isAimingWeapon == 16 && drawBow == 17)
-                            // {
-                            //     if (!r2Held)
-                            //     {
-                            //         // First time R2 is pressed
-                            //         r2Held = true;
-                            //         r2StartTime = DateTime.Now;
-                            //         R2 = true;
-                            //     }
-                            //     else
-                            //     {
-                            //         // R2 is being held, check duration
-                            //         if ((DateTime.Now - r2StartTime).TotalSeconds > 0.12)
-                            //         {
-                            //             R2 = false;
-                            //         }
-                            //     }
-                            // }
-                            // else
-                            // {
-                            //     // R2 is released
-                            //     r2Held = false;
-                            //     r2StartTime = DateTime.MinValue;
-                            //     R2 = false;
-                            // }
-
-
-                            // int currentShootWeaponState = shootWeaponState1;
-                            // int currentShootWeaponState = shootWeaponState;
-
-                            // Shot fired → activate Machine mode
-                            // by adding both previousWeaponType.Contains("shotgun") and weapon_type.Contains("shotgun") in this condtion, specifically for the ammo logic, it helps prevent L2 trigger feedback from occuring when it's not supposed to
-                            // if (
-                            //    (isAimingWeapon == 16) &&
-                            //     holdingLeftTrigger &&
-                            //     (
-                            //     // (((shootWeaponState > 0 && !wasShotgunShot && previousShotgunAmmo != -1 && currentAmmo < previousShotgunAmmo) || (previousShotgunAmmo2 != -1 && currentAmmo2 < previousShotgunAmmo2)) && backupAmmo <= 1 && weapon_type.Contains("shotgun")) ||
-                            //     // previousShootWeaponState1 != -1 && currentShootWeaponState > previousShootWeaponState1)
-                            //     previousShootWeaponState != -1 && currentShootWeaponState > previousShootWeaponState)
-                            // )
-                            // {
-                            //     //  if (weapon_type.Contains("incendiary")
-                            //     // || (previousWeaponType.Contains("incendiary") && weapon_type.Contains("choke"))
-                            //     // )                                
-                            //     // {
-                            //     //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                            //     //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Machine, 1, 9, 7, 7, 18, 0];
-                            //     // }
-                            //     // else
-                            //     // {
-                            //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                            //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.PulseB, 1, 190, 100, 0, 0, 0, 0];
-                            //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Machine, 7, 9, 7, 7, 1, 0];
-                            //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.AutomaticGun, 5, 8, 1];
-                            //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.VibratePulseB, 60, 10, 255, 1, 0, 0, 0]; // default
-                            //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.VibrateTrigger, 1];
-                            //     // }
-
-                            //     // wasShotgunShot = true;
-                            // }
-                            // else
-                            // {
+                            
                             // Reset left trigger to off
                             p.instructions[2].type = InstructionType.TriggerUpdate;
                             p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
 
-                            // wasShotgunShot = false;
-                            // }
-
-                            // previousShootWeaponState1 = currentShootWeaponState;
-                            // previousShootWeaponState = currentShootWeaponState;
 
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
@@ -671,18 +414,6 @@ namespace DualSenseROTTR
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.PulseA, 155, 130, 0, 0, 0, 0, 0]; // default
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.PulseA, 155, 130, 10, 0, 0, 0, 0]; // strongest // was 30
                                                                                                                                                                                           // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 100, 0, 0, 0, 0, 0]; // was 50 // 40 // 30
-
-                                // when Lara draws her bow
-                                // if (drawBow == 17  && !R2)
-                                // {
-                                //     p.instructions[3].type = InstructionType.TriggerUpdate;
-                                //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.VibratePulseB, 60, 10, 25, 80, 0, 0, 0]; // default weakest
-                                //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.VibratePulseB, 60, 10, 30, 80, 0, 0, 0]; // moderate
-                                //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.VibratePulseB, 60, 10, 35, 77, 0, 0, 0]; // default
-                                //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.VibratePulseB, 60, 10, 50, 80, 0, 0, 0]; // strongest
-                                //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Machine, 4, 9, 5, 4, 80, 0]; // or 27 // 36
-                                //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.AutomaticGun, 5, 5, 80];
-                                // }
 
                             }
                             else
@@ -702,25 +433,6 @@ namespace DualSenseROTTR
                         // || weapon_type == 4326952780 long
                         )
                         {
-                            //     if (isHoldingWeapon == 1) // pick axe
-                            // // if (isHoldingPickAxe == 396) // pick axe
-                            //     {
-                            //         p.instructions![4].type = InstructionType.RGBUpdate;
-                            //         // p.instructions[4].parameters = [controllerIndex, 255, 32, 255]; // original
-                            //         // p.instructions[4].parameters = [controllerIndex, 191, 32, 191]; // 75% dimmer original
-                            //         p.instructions[4].parameters = [controllerIndex, 128, 0, 255]; // original
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 109, 0, 217]; // 85% dimmer
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 96, 0, 191]; // 75% dimmer
-                            //     }
-                            //     else
-                            //     {
-                            //         p.instructions[4].type = InstructionType.RGBUpdate;
-                            //         p.instructions[4].parameters = [controllerIndex, 255, 255, 0]; // original
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 217, 217, 0]; // 85% dimmer
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 191, 191, 0]; // 75% dimmer
-                            //     }
-
-
 
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
@@ -735,36 +447,6 @@ namespace DualSenseROTTR
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
                             }
 
-
-                            // int currentShootWeaponState = shootWeaponState;
-
-                            // // Shot fired → activate Machine mode
-                            // // by adding both previousWeaponType.Contains("shotgun") and weapon_type.Contains("shotgun") in this condtion, specifically for the ammo logic, it helps prevent L2 trigger feedback from occuring when it's not supposed to
-                            // if (
-                            //    (isAimingWeapon == 16) &&
-                            //     holdingLeftTrigger &&
-                            //     (
-                            //     // (((shootWeaponState > 0 && !wasShotgunShot && previousShotgunAmmo != -1 && currentAmmo < previousShotgunAmmo) || (previousShotgunAmmo2 != -1 && currentAmmo2 < previousShotgunAmmo2)) && backupAmmo <= 1 && weapon_type.Contains("shotgun")) ||
-                            //     previousShootWeaponState != -1 && currentShootWeaponState > previousShootWeaponState)
-                            // )
-                            // {
-                            //     //  if (weapon_type.Contains("incendiary")
-                            //     // || (previousWeaponType.Contains("incendiary") && weapon_type.Contains("choke"))
-                            //     // )                                
-                            //     // {
-                            //     //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                            //     //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Machine, 1, 9, 7, 7, 18, 0];
-                            //     // }
-                            //     // else
-                            //     // {
-                            //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                            //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.VibrateTriggerPulse];
-                            //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.VibrateTrigger, 18]; // default
-                            //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Machine, 1, 9, 6, 6, 36, 0]; // or 27 // 36
-                            //     // }
-
-                            //     // wasShotgunShot = true;
-                            // }
                             if (isHoldingWeapon == 65537)
                             {
                                 // wasHandgunShot = false;
@@ -784,8 +466,6 @@ namespace DualSenseROTTR
 
                                 // wasShotgunShot = false;
                             }
-
-                            // previousShootWeaponState = currentShootWeaponState;
 
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
@@ -819,26 +499,6 @@ namespace DualSenseROTTR
                         // || weapon_type == 7526949996 // long
                         )
                         {
-                            // Touchpad LED
-                            //     if (isHoldingWeapon == 1) // pick axe
-                            // // if (isHoldingPickAxe == 396) // pick axe
-                            //     {
-                            //         p.instructions![4].type = InstructionType.RGBUpdate;
-                            //         // p.instructions[4].parameters = [controllerIndex, 255, 32, 255]; // original
-                            //         // p.instructions[4].parameters = [controllerIndex, 191, 32, 191]; // 75% dimmer original
-                            //         p.instructions[4].parameters = [controllerIndex, 128, 0, 255]; // original
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 109, 0, 217]; // 85% dimmer
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 96, 0, 191]; // 75% dimmer
-                            //     }
-                            //     else
-                            //     {
-
-                            //         p.instructions[4].type = InstructionType.RGBUpdate;
-                            //         // p.instructions[4].parameters = [controllerIndex, 255, 165, 0]; // orange
-                            //         p.instructions[4].parameters = [controllerIndex, 255, 100, 0]; // modified orange original
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 217, 85, 0]; // 85% dimmer
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 191, 124, 0]; // 75% dimmer
-                            //     }
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
@@ -852,36 +512,6 @@ namespace DualSenseROTTR
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
                             }
 
-
-                            // int currentShootWeaponState = shootWeaponState;
-
-                            // // Shot fired → activate Machine mode
-                            // // by adding both previousWeaponType.Contains("shotgun") and weapon_type.Contains("shotgun") in this condtion, specifically for the ammo logic, it helps prevent L2 trigger feedback from occuring when it's not supposed to
-                            // if (
-                            //    (isAimingWeapon == 16) &&
-                            //     holdingLeftTrigger &&
-                            //     (
-                            //     // (((shootWeaponState > 0 && !wasShotgunShot && previousShotgunAmmo != -1 && currentAmmo < previousShotgunAmmo) || (previousShotgunAmmo2 != -1 && currentAmmo2 < previousShotgunAmmo2)) && backupAmmo <= 1 && weapon_type.Contains("shotgun")) ||
-                            //     previousShootWeaponState != -1 && currentShootWeaponState > previousShootWeaponState)
-                            // )
-                            // {
-                            //     //  if (weapon_type.Contains("incendiary")
-                            //     // || (previousWeaponType.Contains("incendiary") && weapon_type.Contains("choke"))
-                            //     // )                                
-                            //     // {
-                            //     //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                            //     //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Machine, 1, 9, 7, 7, 18, 0];
-                            //     // }
-                            //     // else
-                            //     // {
-                            //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                            //     // p.instructions[2].parameters = new object[] { controllerIndex, Trigger.Left, TriggerMode.AutomaticGun, 9, 7, 9 };
-                            //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Machine, 1, 9, 7, 7, 9, 0]; // or 9 default
-                            //                                                                                                            // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.PulseB, 9, 190, 100, 0, 0, 0, 0];
-                            //                                                                                                            // }
-
-                            //     // wasShotgunShot = true;
-                            // }
                             if (isHoldingWeapon == 65537)
                             {
                                 // wasHandgunShot = false;
@@ -951,24 +581,6 @@ namespace DualSenseROTTR
                          //  || weapon_type == 7146889127 long
                          )
                         {
-                            // Touchpad LED
-                            //     if (isHoldingWeapon == 1) // pick axe
-                            // // if (isHoldingPickAxe == 396) // pick axe
-                            //     {
-                            //         p.instructions![4].type = InstructionType.RGBUpdate;
-                            //         // p.instructions[4].parameters = [controllerIndex, 255, 32, 255]; // original
-                            //         // p.instructions[4].parameters = [controllerIndex, 191, 32, 191]; // 75% dimmer original
-                            //         p.instructions[4].parameters = [controllerIndex, 128, 0, 255]; // original
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 109, 0, 217]; // 85% dimmer
-                            //                                                                        // p.instructions[4].parameters = [controllerIndex, 96, 0, 191]; // 75% dimmer
-                            //     }
-                            //     else
-                            //     {
-                            //         p.instructions[4].type = InstructionType.RGBUpdate;
-                            //         p.instructions[4].parameters = [controllerIndex, 255, 0, 0]; // original
-                            //                                                                      // p.instructions[4].parameters = [controllerIndex, 217, 0, 0]; // 85% dimmer
-                            //                                                                      // p.instructions[4].parameters = [controllerIndex, 191, 0, 0]; // 75% dimmer
-                            //     }
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
@@ -982,37 +594,6 @@ namespace DualSenseROTTR
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
                             }
 
-                            // int currentShootWeaponState = shootWeaponState;
-
-                            // // Shot fired → activate Machine mode
-                            // // by adding both previousWeaponType.Contains("shotgun") and weapon_type.Contains("shotgun") in this condtion, specifically for the ammo logic, it helps prevent L2 trigger feedback from occuring when it's not supposed to
-                            // if (
-                            //    (isAimingWeapon == 16) &&
-                            //     holdingLeftTrigger &&
-                            //     (
-                            //     // (((shootWeaponState > 0 && !wasShotgunShot && previousShotgunAmmo != -1 && currentAmmo < previousShotgunAmmo) || (previousShotgunAmmo2 != -1 && currentAmmo2 < previousShotgunAmmo2)) && backupAmmo <= 1 && weapon_type.Contains("shotgun")) ||
-                            //     previousShootWeaponState != -1 && currentShootWeaponState > previousShootWeaponState)
-                            // )
-                            // {
-                            //     //  if (weapon_type.Contains("incendiary")
-                            //     // || (previousWeaponType.Contains("incendiary") && weapon_type.Contains("choke"))
-                            //     // )                                
-                            //     // {
-                            //     //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                            //     //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Machine, 1, 9, 7, 7, 18, 0];
-                            //     // }
-                            //     // else
-                            //     // {
-                            //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                            //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.VibrateResistance, 36, 50, 0, 0, 0, 0, 0]; // strongest
-                            //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.VibrateResistance, 36, 25, 140, 0, 0, 0, 0]; // default
-                            //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.VibrateTrigger, 36];
-                            //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Machine, 1, 9, 7, 7, 27, 0]; // or 40
-                            //                                                                                                             // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.AutomaticGun, 0, 8, 36];
-                            //                                                                                                             // }
-
-                            //     // wasShotgunShot = true;
-                            // }
                             if (isHoldingWeapon == 65537)
                             {
                                 // wasHandgunShot = false;
@@ -1062,18 +643,18 @@ namespace DualSenseROTTR
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
                             }
                         }
-                        else
-                        {
-                            p.instructions[1].type = InstructionType.TriggerThreshold;
-                            p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
+                        // else
+                        // {
+                        //     p.instructions[1].type = InstructionType.TriggerThreshold;
+                        //     p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
 
-                            // Reset left trigger to off
-                            p.instructions[2].type = InstructionType.TriggerUpdate;
-                            p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
-                            // Reset right trigger to off
-                            p.instructions[3].type = InstructionType.TriggerUpdate;
-                            p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
-                        }
+                        //     // Reset left trigger to off
+                        //     p.instructions[2].type = InstructionType.TriggerUpdate;
+                        //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
+                        //     // Reset right trigger to off
+                        //     p.instructions[3].type = InstructionType.TriggerUpdate;
+                        //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
+                        // }
                     }
 
                     // Player number
