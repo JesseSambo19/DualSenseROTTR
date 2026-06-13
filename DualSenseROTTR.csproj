@@ -12,9 +12,6 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="SharpDX.DirectInput" Version="4.2.0" /> 
-    <!-- <Reference Include="Memory">
-      <HintPath>lib/Memory.dll</HintPath>
-    </Reference> -->
   </ItemGroup>
 
 </Project>

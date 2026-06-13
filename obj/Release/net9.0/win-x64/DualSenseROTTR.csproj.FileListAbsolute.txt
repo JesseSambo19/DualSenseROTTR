@@ -3,7 +3,6 @@ C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x64\DualSenseROTTR.runtimeconfig.json
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x64\DualSenseROTTR.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x64\DualSenseROTTR.pdb
-C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x64\HidSharp.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x64\Newtonsoft.Json.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x64\Microsoft.CSharp.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x64\Microsoft.VisualBasic.Core.dll

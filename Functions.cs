@@ -1,5 +1,3 @@
-// using Memory;
-
 namespace DualSenseROTTR
 {
     public static class Functions
@@ -20,8 +18,6 @@ namespace DualSenseROTTR
                 int pauseStates = mem.SafeReadInt(pauseStatesPointer!);
                 float isAimingWeapon2 = mem.SafeReadFloat(aimWeapon2Pointer!);
 
-                // Console.WriteLine($"Debug: weapon_type={weapon_type}, isHoldingWeapon={isHoldingWeapon}, isAimingWeapon={isAimingWeapon}, isAimingWeapon2={isAimingWeapon2}, pauseStates={pauseStates}");
-
                 return weapon_type != 0 || isHoldingWeapon != 0 || isAimingWeapon != 0 || isAimingWeapon2 != 0 || pauseStates != 0;
             }
             catch
@@ -35,12 +31,6 @@ namespace DualSenseROTTR
         {
             if (platform == "Steam" && productVersion == "1.0" && fileVersion == "1.0.0.0")
             {
-                // Program.weaponTypePointer = "ROTTR.exe+02D8C758,2E8,140,398,8,390,8,2E0";
-                // Program.isHoldingWeaponPointer = "ROTTR.exe+02D9A3F8,2B0,658,0,2C0,8,5A0";
-                // Program.aimWeaponPointer = "ROTTR.exe+0161E0C8,978,958,960,148,20,88,28";
-                // Program.aimWeapon2Pointer = "ROTTR.exe+0161E0C8,978,148,48,50,18,960,110";
-                // Program.pauseStatesPointer = "ROTTR.exe+02E6C0A8,190,68,0,10,0,0,DF8";
-
                 Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x02D8C758, new int[] { 0x2E8, 0x140, 0x398, 0x8, 0x390, 0x8, 0x2E0 });
                 Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02D9A3F8, new int[] { 0x2B0, 0x658, 0x0, 0x2C0, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x0161E0C8,  new int[] { 0x978, 0x958, 0x960, 0x148, 0x20, 0x88, 0x28 });
@@ -49,12 +39,6 @@ namespace DualSenseROTTR
             }
             else if (platform == "Epic Games Store" && productVersion == "1.0" && fileVersion == "1.0.1027.0")
             {
-                // Program.weaponTypePointer = "ROTTR.exe+010E1CD0,48,50,10,B0,2D0,80,2F8";
-                // Program.isHoldingWeaponPointer = "ROTTR.exe+018DDCA8,60,50,10,B8,2A8,8,5A0";
-                // Program.aimWeaponPointer = "ROTTR.exe+014AB068,960,148,38,30,20,88,28";
-                // Program.aimWeapon2Pointer = "ROTTR.exe+014AB068,138,978,958,148,50,840,110";
-                // Program.pauseStatesPointer = "ROTTR.exe+02CF8910,78,118,28,B8,1D0,0,CB8";
-
                 Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x02C196F0,  new int[] { 0x398, 0x8, 0x388, 0x8, 0x390, 0x8, 0x2E0 });
                 Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02C27388,  new int[] { 0x2E0, 0x8, 0x2D0, 0x8, 0x2A8, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x014AB068,  new int[] {0x960, 0x148, 0x38, 0x30, 0x20, 0x88, 0x28 });
@@ -63,12 +47,6 @@ namespace DualSenseROTTR
             }
             else if (platform == "Steam" && productVersion == "1.0" && fileVersion == "1.0.1026.0")
             {
-                // Program.weaponTypePointer = "ROTTR.exe+02D583E8,10,388,300,48,870,B0,2E0";
-                // Program.isHoldingWeaponPointer = "ROTTR.exe+01105378,60,870,B8,2A8,8,5A0";
-                // Program.aimWeaponPointer = "ROTTR.exe+0161F0B0,978,148,38,20,68,88,28";
-                // Program.aimWeapon2Pointer = "ROTTR.exe+0161F0B0,148,50,858,138,960,970,110";
-                // Program.pauseStatesPointer = "ROTTR.exe+02E6D018,450,58,208,0,28,1E0,DF8";
-
                 Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x02D8D6F0,  new int[] { 0x3A8, 0x8, 0x380, 0x8, 0x2D0, 0xC0, 0x2F8 });
                 Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02D9B388,  new int[] { 0x298, 0x30, 0x8, 0x2A8, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x0161F0B0,  new int[] { 0x978, 0x148, 0x38, 0x20, 0x68, 0x88, 0x28 });
@@ -77,12 +55,6 @@ namespace DualSenseROTTR
             }
             else if (platform == "GOG" && productVersion == "1.0" && (fileVersion == "1.0.1.0" || fileVersion == "1.0.1.1" || fileVersion == "1.0.1.2"))
             {
-                // Program.weaponTypePointer = "ROTTR.exe+02CD5EE8,60,50,10,B0,2D0,280,2F8";
-                // Program.isHoldingWeaponPointer = "ROTTR.exe+02CE3BD0,298,0,8,2A8,8,5A0";
-                // Program.aimWeaponPointer = "ROTTR.exe+015678D8,138,978,148,20,88,28";
-                // Program.aimWeapon2Pointer = "ROTTR.exe+015678D8,148,50,858,138,958,960,110";
-                // Program.pauseStatesPointer = "ROTTR.exe+02CD4B50,8,188,10,0,E38";
-
                 Program.weaponTypePointer = Tuple.Create(Program.baseAddress + 0x02CD5E60,  new int[] { 0x3A8, 0x8, 0x2D0, 0x100, 0x3A0, 0x8, 0x2E0 });
                 Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02CE3BD0,  new int[] { 0x298, 0x0, 0x8, 0x2A8, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x015678D8,  new int[] { 0x138, 0x978, 0x148, 0x20, 0x88, 0x28 });

@@ -3,7 +3,6 @@ C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\DualSen
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\DualSenseROTTR.runtimeconfig.json
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\DualSenseROTTR.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\DualSenseROTTR.pdb
-C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\HidSharp.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\Newtonsoft.Json.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Debug\net9.0\DualSenseROTTR.csproj.AssemblyReference.cache
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Debug\net9.0\DualSenseROTTR.GeneratedMSBuildEditorConfig.editorconfig
