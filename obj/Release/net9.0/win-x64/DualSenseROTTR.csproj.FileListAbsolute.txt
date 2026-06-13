@@ -201,3 +201,5 @@ C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Release\net9.0\win-x
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Release\net9.0\win-x64\DualSenseROTTR.pdb
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Release\net9.0\win-x64\DualSenseROTTR.genruntimeconfig.cache
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Release\net9.0\win-x64\ref\DualSenseROTTR.dll
+C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x64\SharpDX.dll
+C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Release\net9.0\win-x64\SharpDX.DirectInput.dll

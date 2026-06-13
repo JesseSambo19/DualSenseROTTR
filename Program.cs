@@ -6,6 +6,8 @@ using System.Net.Sockets;
 using System.Text;
 // using Memory;
 // using SharpDX.DirectInput;
+// using Windows.Gaming.Input;
+// using HidSharp;
 
 namespace DualSenseROTTR
 {
@@ -27,16 +29,14 @@ namespace DualSenseROTTR
 
         public static IntPtr baseAddress;
 
-        // public static string weaponTypePointer;
-        // public static string isHoldingWeaponPointer;
-        // public static string aimWeaponPointer;
-        // public static string aimWeapon2Pointer;
-        // public static string pauseStatesPointer;
-
         public static Tuple<IntPtr, int[]>? weaponTypePointer;
+
         public static Tuple<IntPtr, int[]>? isHoldingWeaponPointer;
+
         public static Tuple<IntPtr, int[]>? aimWeaponPointer;
+
         public static Tuple<IntPtr, int[]>? aimWeapon2Pointer;
+
         public static Tuple<IntPtr, int[]>? pauseStatesPointer;
 
 
@@ -171,11 +171,11 @@ namespace DualSenseROTTR
 
             while (!Functions.IsValidMemory(
                 weaponTypePointer,
-            isHoldingWeaponPointer,
-            aimWeaponPointer,
-            aimWeapon2Pointer,
-            pauseStatesPointer,
-                mem))
+                isHoldingWeaponPointer,
+                aimWeaponPointer,
+                aimWeapon2Pointer,
+                pauseStatesPointer,
+                    mem))
             {
                 gameProcessName = Process.GetProcessesByName("ROTTR");
 
@@ -211,22 +211,33 @@ namespace DualSenseROTTR
             {
                 // Controller state for trigger reading
                 XINPUT_STATE controllerState = new();
+                DualSenseReader ds = new();
 
                 while (gameProcessName.Length > 0)
                 {
                     gameProcessName = Process.GetProcessesByName("ROTTR");
+                    var state = ds.GetState();
 
                     // Poll controller state from XInput (Windows Xbox controller API)
                     // Since DSX makes DualSense appear as Xbox controller, we can read trigger states
                     uint xinputResult = XInputReader.SafeXInputGetState((uint)controllerIndex, ref controllerState); // controllerIndex = 0 = first controller
                     // xinputResult: Windows error code (0 = success, 1167 = no controller, etc.)
 
-                    bool leftTriggerPressed = (xinputResult == 0) && (controllerState.Gamepad.bLeftTrigger > 40); // Higher threshold to avoid noise
+                    bool xboxLeftTriggerPressed = (xinputResult == 0) && (controllerState.Gamepad.bLeftTrigger > 40); // Higher threshold to avoid noise
+                    bool ds4LeftTriggerPressed = state.Connected && (state.L2 > 10280); // Higher threshold to avoid noise
+                    // Console.WriteLine($"XInput Result: {xinputResult} | Left Trigger Value: {controllerState.Gamepad.bLeftTrigger} | Left Trigger Pressed: {xboxLeftTriggerPressed} | Controller Connected: {state.Connected} | DS4 Left Trigger Value: {state.L2} | DS4 Left Trigger Pressed: {ds4LeftTriggerPressed}");
 
                     // bool holdingLeftTrigger = xinputResult == 0 ? (xinputResult == 0) && (controllerState.Gamepad.bLeftTrigger > 140) : true;
-                    bool holdingLeftTrigger = xinputResult != 0 || leftTriggerPressed;
+                    // bool holdingLeftTrigger = xinputResult != 0 || xboxLeftTriggerPressed;
 
-                    // Functions.CheckPlatform(platform, fileVersion!, versionInfo!.ProductVersion!, mem);
+                    // if (!state.Connected)
+                    // {
+                    //     Console.WriteLine("Controller disconnected...");
+                    //     Thread.Sleep(500);
+                    //     continue;
+                    // }
+
+                    // Console.Clear();
 
                     int weapon_type = mem.SafeReadInt(weaponTypePointer!);
                     int isHoldingWeapon = mem.SafeReadInt(isHoldingWeaponPointer!);
@@ -236,58 +247,21 @@ namespace DualSenseROTTR
 
                     // Console.WriteLine($"Weapon Type: {weapon_type} | Is Holding Weapon: {isHoldingWeapon} | Is Aiming Weapon: {isAimingWeapon} | Is Aiming Weapon 2: {isAimingWeapon2} | Pause States: {pauseStates}");
                     if (
-                        // false
                         // default_weapon_type == 0 || isAimingWeapon == 1 || 
                         weapon_type == 0 || (weapon_type != 1 && weapon_type != 2 && weapon_type != 3 && weapon_type != 4) ||
                         // pauseStates == 0 || 
                         pauseStates == 10 || pauseStates == 13 // 12 - play, 10 - pause/start menu, 13 - loading screen
-                        ) // isAimingWeapon == 1 for cutscenes, pauseStates == 0 for pause and map menus
+                        )
                     {
-
                         p.instructions[4].type = InstructionType.RGBUpdate;
                         // p.instructions[4].parameters = [controllerIndex, 50, 150, 250]; // original
                         p.instructions[4].parameters = [controllerIndex, 50, 75, 250]; // original
 
-                        if (
-                        // weapon_type == "" &&
-                        // default_weapon_type == 0
-                        weapon_type == 0 || pauseStates == 13
-                        ) // Off
+                        if (weapon_type == 0 || pauseStates == 13) // Off
                         {
-                            // p.instructions[4].type = InstructionType.RGBUpdate;
-                            // p.instructions[4].parameters = [controllerIndex, 0, 0, 0];
-
                             previousWeaponTypeId = 0;
                         }
 
-                        // // Adaptive triggers for the escape from collapsing cave QTE at the start of the game on L2/LT and R2/RT
-                        // if (default_weapon_type == 0 && !isHoldingTorch && !isHoldingTorchAndNoWeapons && dualPistols >= 590 && dualPistols <= 595 && dualPistols != 594 && (cave == 5 || secondCave == 5) && quickTimeEvent == 1 && location == 112 && pauseStates == 1 && menuAndLoadingScreens == 1 && isAimingWeapon != 1)
-                        // // if (default_weapon_type == 0 && !isHoldingTorch && !isHoldingTorchAndNoWeapons && (dualPistols == 590 || dualPistols == 595) && dualPistols != 594 && (cave == 5 || secondCave == 5) && quickTimeEvent == 1 && location == 112 && pauseStates == 1 && menuAndLoadingScreens == 1 && isAimingWeapon != 1) // decide if to use this later
-                        // {
-                        //     // Reset left trigger threshold to 0
-                        //     p.instructions[0].type = InstructionType.TriggerThreshold;
-                        //     p.instructions[0].parameters = [controllerIndex, Trigger.Left, 0];
-
-                        //     // Reset right trigger threshold to 0
-                        //     p.instructions[1].type = InstructionType.TriggerThreshold;
-                        //     p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
-
-                        //     // Reset right trigger to off
-                        //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                        //     // p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 50, 0, 0, 0, 0];
-                        //     // p.instructions[2].parameters = new object[] {controllerIndex, Trigger.Left, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 0, 0, 0, 0, 0, 0};
-                        //     p.instructions[2].parameters = new object[] {controllerIndex, Trigger.Left, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 10, 0, 0, 0, 0, 0};
-                        //     // p.instructions[2].parameters = new object[] {controllerIndex, Trigger.Left, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 20, 0, 0, 0, 0, 0};
-
-                        //     // Reset right trigger to off
-                        //     p.instructions[3].type = InstructionType.TriggerUpdate;
-                        //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 50, 0, 0, 0, 0];
-                        //     // p.instructions[3].parameters = new object[] {controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 0, 0, 0, 0, 0, 0};
-                        //     p.instructions[3].parameters = new object[] {controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 10, 0, 0, 0, 0, 0};
-                        //     // p.instructions[3].parameters = new object[] {controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 20, 0, 0, 0, 0, 0};
-                        // }
-                        // else
-                        // {
                         // Reset left trigger threshold to 0
                         p.instructions[0].type = InstructionType.TriggerThreshold;
                         p.instructions[0].parameters = [controllerIndex, Trigger.Left, 0];
@@ -303,8 +277,6 @@ namespace DualSenseROTTR
                         // Reset right trigger to off
                         p.instructions[3].type = InstructionType.TriggerUpdate;
                         p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
-                        // }
-
                     }
                     else
                     {
@@ -313,13 +285,9 @@ namespace DualSenseROTTR
                         p.instructions[4].parameters = [controllerIndex, 50, 75, 250]; // original
                         // // Determine if Lara currently has a valid weapon equipped.
                         // // Certain weapon IDs are excluded, and an action state must be active.
-                        // bool hasWeaponEquipped = (isHoldingWeapon2 > 0 && isHoldingWeapon2 != 69 && isHoldingWeapon2 != 704 && action > 0) || (secondIsHoldingWeapon2 > 0 && secondIsHoldingWeapon2 != 69 && secondIsHoldingWeapon2 != 704 && secondAction > 0);
 
-                        // // bool hasDualPistolsEquipped = default_weapon_type == 31985484 && isAimingWeapon == 16 && (edge == 177 || dualPistols == 588) && ((isHoldingWeapon2 > 0 && isHoldingWeapon2 != 69 && isHoldingWeapon2 != 704 && action == 0) || (secondIsHoldingWeapon2 > 0 && secondIsHoldingWeapon2 != 69 && secondIsHoldingWeapon2 != 704 && secondAction == 0)); // original
-                        // bool hasDualPistolsEquipped = default_weapon_type == 31985484 && isAimingWeapon == 16 && ((edge == 177 && traversal == 512) || dualPistols == 588) && location == 33 && ((isHoldingWeapon2 > 0 && isHoldingWeapon2 != 69 && isHoldingWeapon2 != 704 && (action == 0 || action > 0 && isHoldingFireStriker1 > 0)) || (secondIsHoldingWeapon2 > 0 && secondIsHoldingWeapon2 != 69 && secondIsHoldingWeapon2 != 704 && (secondAction == 0 || secondAction > 0 && secondIsHoldingFireStriker1 > 0)));
-
-                        if (xinputResult == 0)
-                        // if (xinputResult == 0 || joystickGuid != Guid.Empty)
+                        // if (xinputResult == 0)
+                        if (xinputResult == 0 || state.Connected)
                         {
                             // Check if weapon changed this frame
                             if (weapon_type != previousWeaponTypeId && previousWeaponTypeId != 0)
@@ -344,21 +312,21 @@ namespace DualSenseROTTR
                                     case TriggerArmState.Idle:
                                         // Weapon just became available.
                                         // Wait for the trigger to be fully released before arming.
-                                        if (!leftTriggerPressed)
+                                        if (!xboxLeftTriggerPressed && !ds4LeftTriggerPressed)
                                             triggerState = TriggerArmState.WaitingRelease;
                                         break;
 
                                     case TriggerArmState.WaitingRelease:
                                         // Trigger is idle with a weapon equipped.
                                         // This arms the higher threshold for the next pull.
-                                        if (!leftTriggerPressed)
+                                        if (!xboxLeftTriggerPressed && !ds4LeftTriggerPressed)
                                             triggerState = TriggerArmState.Armed;
                                         break;
 
                                     case TriggerArmState.Armed:
                                         // Once the player starts pulling the trigger again,
                                         // consume the armed state and wait for the next release.
-                                        if (leftTriggerPressed)
+                                        if (xboxLeftTriggerPressed || ds4LeftTriggerPressed)
                                             triggerState = TriggerArmState.WaitingRelease;
                                         break;
                                 }
@@ -398,7 +366,7 @@ namespace DualSenseROTTR
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
-                            if (isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25 || (isHoldingWeapon == 65537 && isAimingWeapon != 0.25 && (xboxLeftTriggerPressed || ds4LeftTriggerPressed)))
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 160];
@@ -417,14 +385,13 @@ namespace DualSenseROTTR
 
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
-                            if (isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25 || (isHoldingWeapon == 65537 && isAimingWeapon != 0.25 && (xboxLeftTriggerPressed || ds4LeftTriggerPressed)))
                             {
                                 // Bow effect
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.PulseA, 155, 130, 0, 0, 0, 0, 0]; // default
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.PulseA, 155, 130, 10, 0, 0, 0, 0]; // strongest // was 30
-                                                                                                                                                                                          // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 100, 0, 0, 0, 0, 0]; // was 50 // 40 // 30
-
+                                // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Rigid, 0, 100, 0, 0, 0, 0, 0]; // was 50 // 40 // 30
                             }
                             else
                             {
@@ -432,7 +399,6 @@ namespace DualSenseROTTR
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
                             }
-
                         }
 
                         else if (
@@ -443,11 +409,10 @@ namespace DualSenseROTTR
                         // || weapon_type == 4326952780 long
                         )
                         {
-
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
-                            if (isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25 || (isHoldingWeapon == 65537 && isAimingWeapon != 0.25 && (xboxLeftTriggerPressed || ds4LeftTriggerPressed)))
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
@@ -460,8 +425,6 @@ namespace DualSenseROTTR
 
                             if (isHoldingWeapon == 65537)
                             {
-                                // wasHandgunShot = false;
-
                                 // Single pistol idle
                                 // Aiming with one pistol
                                 p.instructions[2].type = InstructionType.TriggerUpdate;
@@ -474,13 +437,11 @@ namespace DualSenseROTTR
                                 // Reset left trigger to off
                                 p.instructions[2].type = InstructionType.TriggerUpdate;
                                 p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
-
-                                // wasShotgunShot = false;
                             }
 
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
-                            if (isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25 || (isHoldingWeapon == 65537 && isAimingWeapon != 0.25 && (xboxLeftTriggerPressed || ds4LeftTriggerPressed)))
                             {
                                 // Hand gun or Pistol:
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -514,7 +475,7 @@ namespace DualSenseROTTR
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
-                            if (isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25 || (isHoldingWeapon == 65537 && isAimingWeapon != 0.25 && (xboxLeftTriggerPressed || ds4LeftTriggerPressed)))
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
@@ -527,8 +488,6 @@ namespace DualSenseROTTR
 
                             if (isHoldingWeapon == 65537)
                             {
-                                // wasHandgunShot = false;
-
                                 // Single pistol idle
                                 // Aiming with one pistol
                                 p.instructions[2].type = InstructionType.TriggerUpdate;
@@ -545,26 +504,8 @@ namespace DualSenseROTTR
                                 // wasShotgunShot = false;
                             }
 
-                            // previousShootWeaponState = currentShootWeaponState;
-
-                            if (isAimingWeapon == 16 && isHoldingWeapon == 65537
-                                // && previousWeaponType.Contains("machinegun") && weapon_type.Contains("machinegun") && !previousWeaponType.Contains("grenade")
-                                // && !weapon_type.Contains("grenade")
-
-                                )
+                            if (isAimingWeapon2 == 0.25 || (isHoldingWeapon == 65537 && isAimingWeapon != 0.25 && (xboxLeftTriggerPressed || ds4LeftTriggerPressed)))
                             {
-                                // if (machinegunAmmo > 0)
-                                // {
-                                //     p.instructions[3].type = InstructionType.TriggerUpdate;
-                                //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.VIBRATION, 0, 9, 7, 7, 10, 0]; // moderate
-                                //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.VIBRATION, 3, 8, 9]; // moderate
-                                //     // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.PulseB, 9, 55, 110]; // moderate
-                                //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.VIBRATION, 4, 8, 11]; // Submachine gun - rapid fire stutter
-                                // }
-                                // else
-                                // {
-
-
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
                                 // p.instructions[3].parameters = new object[] { controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.RigidAB, 60, 40, 86, 102, 184, 172, 2 }; // machine gun
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 73, 135, 32, 0, 0, 0, 0]; // default
@@ -576,7 +517,6 @@ namespace DualSenseROTTR
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 70, 145, 50, 0, 0, 0, 0]; // moderate // preferred
                                 // p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 73, 140, 40, 0, 0, 0, 0];
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.CustomTriggerValue, CustomTriggerValueMode.Pulse, 73, 140, 38, 0, 0, 0, 0];
-                                // }
                             }
                             else
                             {
@@ -597,7 +537,7 @@ namespace DualSenseROTTR
                             // 256 is for aiming a weapon
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
-                            if (isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25 || (isHoldingWeapon == 65537 && isAimingWeapon != 0.25 && (xboxLeftTriggerPressed || ds4LeftTriggerPressed)))
                             {
                                 p.instructions[1].type = InstructionType.TriggerThreshold;
                                 p.instructions[1].parameters = [controllerIndex, Trigger.Right, 200];
@@ -610,8 +550,6 @@ namespace DualSenseROTTR
 
                             if (isHoldingWeapon == 65537)
                             {
-                                // wasHandgunShot = false;
-
                                 // Single pistol idle
                                 // Aiming with one pistol
                                 p.instructions[2].type = InstructionType.TriggerUpdate;
@@ -624,17 +562,11 @@ namespace DualSenseROTTR
                                 // Reset left trigger to off
                                 p.instructions[2].type = InstructionType.TriggerUpdate;
                                 p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
-
-                                // wasShotgunShot = false;
                             }
-
-                            // previousShootWeaponState = currentShootWeaponState;
-
-                            // Console.WriteLine($"currentShootWeaponState: {currentShootWeaponState}, previousShootWeaponState: {previousShootWeaponState}, shootWeaponState: {shootWeaponState}");
 
                             // if ((isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25) && isHoldingWeapon == 65537)
                             // if (isAimingWeapon == 16 || isAimingWeapon > 0 || isAimingWeapon2 == 0.25)
-                            if (isAimingWeapon2 == 0.25)
+                            if (isAimingWeapon2 == 0.25 || (isHoldingWeapon == 65537 && isAimingWeapon != 0.25 && (xboxLeftTriggerPressed || ds4LeftTriggerPressed)))
                             {
                                 // Shotgun or any heavy gun:
                                 p.instructions[3].type = InstructionType.TriggerUpdate;
@@ -658,18 +590,6 @@ namespace DualSenseROTTR
                                 p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
                             }
                         }
-                        // else
-                        // {
-                        //     p.instructions[1].type = InstructionType.TriggerThreshold;
-                        //     p.instructions[1].parameters = [controllerIndex, Trigger.Right, 0];
-
-                        //     // Reset left trigger to off
-                        //     p.instructions[2].type = InstructionType.TriggerUpdate;
-                        //     p.instructions[2].parameters = [controllerIndex, Trigger.Left, TriggerMode.Normal];
-                        //     // Reset right trigger to off
-                        //     p.instructions[3].type = InstructionType.TriggerUpdate;
-                        //     p.instructions[3].parameters = [controllerIndex, Trigger.Right, TriggerMode.Normal];
-                        // }
                     }
 
                     // Player number
@@ -727,7 +647,7 @@ namespace DualSenseROTTR
                             Console.WriteLine($"Unexpected error communicating with DSX: {ex.Message}");
                             string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                             string errorMessage = $"[{timestamp}] Unexpected error communicating with DSX: {ex.Message}\n{ex.StackTrace}";
-                            // Functions.WriteLog(errorMessage);
+                            Functions.WriteLog(errorMessage);
                         }
                     }
                 }
@@ -741,7 +661,7 @@ namespace DualSenseROTTR
                 Console.WriteLine(ex.ToString());
                 string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 string errorMessage = $"[{timestamp}] Unexpected error: [Loop Crash] {ex.Message}\n{ex.StackTrace}";
-                // Functions.WriteLog(errorMessage);
+                Functions.WriteLog(errorMessage);
                 Console.WriteLine("==================================================");
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
@@ -763,13 +683,19 @@ namespace DualSenseROTTR
                 Console.WriteLine(ex.ToString());
                 string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 string errorMessage = $"[{timestamp}] Unexpected error: {ex.Message}\n{ex.StackTrace}";
-                // Functions.WriteLog(errorMessage);
+                Functions.WriteLog(errorMessage);
 
                 if (ex is Win32Exception win32Ex && win32Ex.NativeErrorCode == 5)
                 {
                     // Access denied specific handling
-                    Console.WriteLine("\nAccess denied while trying to communicate with the game. The game may be running as Administrator.");
-                    Console.WriteLine("Fix: Run this mod as Administrator and try again.");
+                    Console.WriteLine("\nAccess denied while trying to communicate with the game.");
+                    Console.WriteLine("The game may be running as administrator.");
+                    Console.WriteLine("Fix:");
+                    Console.WriteLine("Right-click the mod executable (.exe) in the DualSenseROTTR folder");
+                    Console.WriteLine("-> Properties → Compatibility tab");
+                    Console.WriteLine("-> Enable 'Run this program as administrator'");
+                    Console.WriteLine("-> Click Apply, then OK");
+                    Console.WriteLine("-> Restart the mod and try again.");
                 }
 
                 Console.WriteLine("==================================================");

@@ -17,3 +17,5 @@ C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Debug\net9.0\DualSen
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Debug\net9.0\DualSenseROTTR.genruntimeconfig.cache
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Debug\net9.0\ref\DualSenseROTTR.dll
 C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\obj\Debug\net9.0\DualSenseROTTR.sourcelink.json
+C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\SharpDX.dll
+C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\bin\Debug\net9.0\SharpDX.DirectInput.dll

@@ -1,7 +1,7 @@
 ## Credits
 
 - Special thanks to the developers of *DSX* and *DSY* for their inspiration and contributions to the DualSense modding community.
-- *HidSharp* – For HID device access and communication.
+- *SharpDX.DirectInput* - For reading controller input via the Windows DirectInput API.
 - *Newtonsoft.Json* – For handling JSON data.
 - Massive thanks to the developers of DSX and DSY for making DualSense support on PC possible
 - Thanks to [WujekFoliarz](https://github.com/WujekFoliarz) for showing me how to use Cheat Engine and sharing his DualSense controller library (WujLibPad.dll)
@@ -14,4 +14,4 @@
 
 **GitHub hosted by:** Jesse Sambo([@JesseSambo19](https://github.com/JesseSambbo19))
 
-**Nexus mod page:** ([Tomb Raider DualSense Mod](https://www.nexusmods.com/tombraider2013/mods/125))
+**Nexus mod page:** ([Rise of the Tomb Raider DualSense Mod](https://www.nexusmods.com/riseofthetombraider/mods/240))
