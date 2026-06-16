@@ -16,3 +16,9 @@
    at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
    at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 79
    at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 589
+[2026-06-14 22:31:45] Unexpected error: Access is denied.
+   at System.Diagnostics.ProcessManager.OpenProcess(Int32 processId, Int32 access, Boolean throwIfExited)
+   at System.Diagnostics.NtProcessManager.GetModules(Int32 processId, Boolean firstModuleOnly)
+   at System.Diagnostics.NtProcessManager.GetFirstModule(Int32 processId)
+   at DualSenseROTTR.Program.CheckGameProcess() in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 81
+   at DualSenseROTTR.Program.Main(String[] args) in C:\Users\jesse\OneDrive\Documents\GitHub\DualSenseROTTR\Program.cs:line 603

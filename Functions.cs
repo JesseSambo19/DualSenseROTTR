@@ -7,6 +7,7 @@ namespace DualSenseROTTR
             Tuple<IntPtr, int[]>? isHoldingWeaponPointer,
             Tuple<IntPtr, int[]>? aimWeaponPointer,
             Tuple<IntPtr, int[]>? aimWeapon2Pointer,
+            Tuple<IntPtr, int[]>? aimWeapon3Pointer,
             Tuple<IntPtr, int[]>? pauseStatesPointer,
             MemoryReader mem)
         {
@@ -17,8 +18,9 @@ namespace DualSenseROTTR
                 int isAimingWeapon = mem.SafeReadInt(aimWeaponPointer!);
                 int pauseStates = mem.SafeReadInt(pauseStatesPointer!);
                 float isAimingWeapon2 = mem.SafeReadFloat(aimWeapon2Pointer!);
+                int isAimingWeapon3 = mem.SafeReadInt(aimWeapon3Pointer!);
 
-                return weapon_type != 0 || isHoldingWeapon != 0 || isAimingWeapon != 0 || isAimingWeapon2 != 0 || pauseStates != 0;
+                return weapon_type != 0 || isHoldingWeapon != 0 || isAimingWeapon != 0 || isAimingWeapon2 != 0 || isAimingWeapon3 != 0 || pauseStates != 0;
             }
             catch
             {
@@ -35,6 +37,7 @@ namespace DualSenseROTTR
                 Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02D9A3F8, new int[] { 0x2B0, 0x658, 0x0, 0x2C0, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x0161E0C8,  new int[] { 0x978, 0x958, 0x960, 0x148, 0x20, 0x88, 0x28 });
                 Program.aimWeapon2Pointer = Tuple.Create(Program.baseAddress + 0x0161E0C8, new int[] { 0x978, 0x148, 0x48, 0x50, 0x18, 0x960, 0x110 });
+                Program.aimWeapon3Pointer = Tuple.Create(Program.baseAddress + 0x02E1BD08, new int[] { 0x898, 0x1C });
                 Program.pauseStatesPointer = Tuple.Create(Program.baseAddress + 0x02E6C0A8, new int[] { 0x190, 0x68, 0x0, 0x10, 0x0, 0x0, 0xDF8 });
             }
             else if (platform == "Epic Games Store" && productVersion == "1.0" && fileVersion == "1.0.1027.0")
@@ -43,6 +46,7 @@ namespace DualSenseROTTR
                 Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02C27388,  new int[] { 0x2E0, 0x8, 0x2D0, 0x8, 0x2A8, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x014AB068,  new int[] {0x960, 0x148, 0x38, 0x30, 0x20, 0x88, 0x28 });
                 Program.aimWeapon2Pointer = Tuple.Create(Program.baseAddress + 0x014AB068, new int[] { 0x138, 0x978, 0x958, 0x148, 0x50, 0x840, 0x110 });
+                Program.aimWeapon3Pointer = Tuple.Create(Program.baseAddress + 0x02CA8C90, new int[] { 0x898, 0x1C });
                 Program.pauseStatesPointer = Tuple.Create(Program.baseAddress + 0x02CF8910, new int[] { 0x78, 0x118, 0x28, 0xB8, 0x1D0, 0x0, 0xCB8 });
             }
             else if (platform == "Steam" && productVersion == "1.0" && fileVersion == "1.0.1026.0")
@@ -51,7 +55,8 @@ namespace DualSenseROTTR
                 Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02D9B388,  new int[] { 0x298, 0x30, 0x8, 0x2A8, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x0161F0B0,  new int[] { 0x978, 0x148, 0x38, 0x20, 0x68, 0x88, 0x28 });
                 Program.aimWeapon2Pointer = Tuple.Create(Program.baseAddress + 0x0161F0B0, new int[] { 0x148, 0x50, 0x858, 0x138, 0x960, 0x970, 0x110 });
-                Program.pauseStatesPointer = Tuple.Create(Program.baseAddress + 0x02E6D018, new int[] { 0x450, 0x58, 0x208, 0x0, 0x28, 0x1E0, 0xDF8 });
+                Program.aimWeapon3Pointer = Tuple.Create(Program.baseAddress + 0x02E1CC98, new int[] { 0x898, 0x1C });
+                Program.pauseStatesPointer = Tuple.Create(Program.baseAddress + 0x02E6D038,  new int[] { 0x78, 0x190, 0x70, 0x0, 0xDF8 });
             }
             else if (platform == "GOG" && productVersion == "1.0" && (fileVersion == "1.0.1.0" || fileVersion == "1.0.1.1" || fileVersion == "1.0.1.2"))
             {
@@ -59,6 +64,7 @@ namespace DualSenseROTTR
                 Program.isHoldingWeaponPointer = Tuple.Create(Program.baseAddress + 0x02CE3BD0,  new int[] { 0x298, 0x0, 0x8, 0x2A8, 0x8, 0x5A0 });
                 Program.aimWeaponPointer = Tuple.Create(Program.baseAddress + 0x015678D8,  new int[] { 0x138, 0x978, 0x148, 0x20, 0x88, 0x28 });
                 Program.aimWeapon2Pointer = Tuple.Create(Program.baseAddress + 0x015678D8, new int[] { 0x148, 0x50, 0x858, 0x138, 0x958, 0x960, 0x110 });
+                Program.aimWeapon3Pointer = Tuple.Create(Program.baseAddress + 0x02D655E0, new int[] { 0x898, 0x1C });
                 Program.pauseStatesPointer = Tuple.Create(Program.baseAddress + 0x02CD4B50, new int[] { 0x8, 0x188, 0x10, 0x0, 0xE38 });
             }
             else if (platform == "Microsoft Store")

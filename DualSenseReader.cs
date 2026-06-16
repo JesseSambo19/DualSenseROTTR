@@ -140,7 +140,8 @@ namespace DualSenseROTTR
                 state.R2 = s.RotationY;
 
                 // D-pad
-                state.Pov = s.PointOfViewControllers[0];
+                // state.Pov = s.PointOfViewControllers[0];
+                state.Pov = s.PointOfViewControllers.Length > 0 ? s.PointOfViewControllers[0] : -1;
 
                 // Console.WriteLine($"Cross: {state.Cross} | Square: {state.Square} | Triangle: {state.Triangle} | Circle: {state.Circle} | L1: {state.L1} | R1: {state.R1} | L3: {state.L3} | R3: {state.R3} | Options: {state.Options} | Touchpad: {state.Touchpad} | Share: {state.Share} | PS: {state.PS} | DPadUp: {state.DPadUp} | DPadDown: {state.DPadDown} | DPadLeft: {state.DPadLeft} | DPadRight: {state.DPadRight} | L2Pressed: {state.L2Pressed} | R2Pressed: {state.R2Pressed} | Pov: {state.Pov}");
                 // Console.WriteLine($"L2: {state.L2}");
@@ -161,6 +162,8 @@ namespace DualSenseROTTR
         {
             joystick?.Dispose();
             directInput?.Dispose();
+
+            GC.SuppressFinalize(this);
         }
     }
 }

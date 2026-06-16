@@ -145,6 +145,16 @@ namespace DualSenseROTTR
             catch { return fallback; }
         }
 
+        public double SafeReadDouble(Tuple<IntPtr, int[]> pointer, double fallback = 0)
+        {
+            try
+            {
+                double? value = ReadDouble(pointer);
+                return value <= -1 || value == null ? 0 : (double)value;
+            }
+            catch { return fallback; }
+        }
+
         public string SafeReadString(Tuple<IntPtr, int[]> pointer)
         {
             try
