@@ -241,8 +241,6 @@ namespace DualSenseROTTR
                     float isAimingWeapon2 = mem.SafeReadFloat(aimWeapon2Pointer!);
                     int isAimingWeapon3 = mem.SafeReadInt(aimWeapon3Pointer!);
 
-                    // Console.WriteLine($"Weapon Type: {weapon_type} | Is Holding Weapon: {isHoldingWeapon} | Is Aiming Weapon: {isAimingWeapon} | Is Aiming Weapon 2: {isAimingWeapon2} | {isAimingWeapon2 == 0.25} | Is Aiming Weapon 3: {isAimingWeapon3} | {isAimingWeapon3 == 1050253722} | Pause States: {pauseStates}");
-
                     if (
                         weapon_type == 0 || (weapon_type != 1 && weapon_type != 2 && weapon_type != 3 && weapon_type != 4) ||
                         // pauseStates == 0 || 
